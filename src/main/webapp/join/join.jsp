@@ -80,7 +80,7 @@ button:hover {
 				<fieldset>
 					<legend >회원가입</legend>
 					<div>
-						<label>아아디</label>
+						<label>아이디</label>
 						<input type="text" name="username" id="username">
 						<input type="button" value="중복확인" onclick=""> 
 					</div>
