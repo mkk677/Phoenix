@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
 	table{
 		margin:0 auto;
@@ -20,7 +21,30 @@
 	div.right {
 		width: 80%;
 		float: right;
+		
 	}
+	div.i18{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 100px;
+		}
+	div.cont{
+		display: inline;
+	}
+	div.innercont{
+		display: inline-block;
+		margin: 10px;
+		width: 100%;
+	}
+	div.careerArea{
+		display: inline-block; width: 80%
+	}
+	label{
+	display: inline-block;
+		width: 80px;
+	}
+	
 	#title{
 		height: 50px;
 	}
@@ -65,30 +89,37 @@
 	}
 	
 	/* 저장 버튼 */
-	button.save{
-		margin-top: 10px;
-		display:inline-block;
-		width: 60px;
-		background-color: #434343;
-		color: white;
-		padding: 5px 5px;
-		border: none;
-		cursor: pointer;
-		margin-left: 10px;
-		margin-right: 10px;
-		display: block;
-		margin: 8px auto;
+	input[type=button],input[type=submit],input[type=reset] ,button{
+	display:inline-block;
+	width: 70px;
+	background-color: #434343;
+	color: white;
+	padding: 5px 5px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+}
+	button.del{
+		width: 35px;
+		background-color: #00ff0000;
+		border-color: #00ff0000;
+		font-size: 20px;
 	}
 	
 	/* 텍스트 */
 	input[type=text] ,textarea{
 		background-color:#00ff0000;
-		width: 98%;
+		width: 30%;
 		border: none;
 		font-size: 15px;
 		outline:none;
+		border-bottom: solid thin;
 	}
-
+	hr{
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
 </style>
 </head>
 <body>
@@ -98,93 +129,95 @@
 		</div>
 		
 		<div class = "right" >
-			<div>
-				<form method="post" name="boardForm">
-					<table style="width: 900px; border: 0px;">
-						<tr align="center" valign="middle">
-							<td><h1>이력서</h1></td>
-						</tr>
-					</table>
-					<table border="1" style="border-collapse:collapse;background-color:white;">
-						<!-- 이름 -->
-						<tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="이름">
-							</td>
-						</tr>
-						<!-- 생년월일 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="생년월일 ex) 19900101">
-							</td>
-						</tr>
-						<!-- 성별 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="성별 (남 or 여)">
-							</td>
-						</tr>
-						<!-- 연락처 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="연락처">
-							</td>
-						</tr>
-						<!-- 주소 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="주소">
-							</td>
-						</tr>
-						<!-- 이메일 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="이메일">
-							</td>
-						</tr>
-						<!-- 최종학력 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="최종학력">
-							</td>
-						</tr>
-						<!-- 학교명 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="학교명">
-							</td>
-						</tr>
-						<!-- 전공 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="전공">
-							</td>
-						</tr>
-						<!-- 재학기간 -->
-                        <tr height="50px">
-							<td>
-								<input type="text" id="title" placeholder="재학기간">
-							</td>
-						</tr>
-						<!-- 경력사항 및 자격증 -->
-						<tr height="100px">
-							<td>
-								<textarea id="board" placeholder="경력사항 및 자격증"></textarea>					
-							</td>
-						</tr>
-						<!-- 기타사항 -->
-						<tr>
-							<td class="form-group">
-								<input type="text" id="title" placeholder="기타사항">
-							</td>
-						</tr>
-					</table>
-					<!-- 저장 -->
-					<button class="save" id="save" >저장</button>
-				</form>
+			<div class = "i18">
+				<form name="join_form" id="join_form" style="width: 70%;">
+				<fieldset>
+					<legend  style="font-size: 20px;" >이력서</legend>
+					<div class = "cont">
+						<div class="innercont">
+							<label >이름</label>
+							<input type="text" name="username" id="username">
+						</div>
+						<div class="innercont">
+							<label>성별</label>
+							<input type="text" name="username" id="username">
+						</div>
+						<div class="innercont">
+							<label>연락처</label>
+							<input type="text" name="username" id="username">
+						</div>
+						<div class="innercont">
+							<label>주소</label>
+							<input type="text" name="username" id="username" style="width: 50%;">
+						</div>
+						<div class="innercont">
+							<label>이메일</label>
+							<input type="text" name="username" id="username">
+						</div>
+						
+					</div>
+					<hr>
+					<div class = "cont">
+						<div class="innercont">
+							<label>최종학력</label>
+							<input type="text" name="username" id="username">
+						</div>
+						<div class="innercont">
+							<label>학교명</label>
+							<input type="text" name="username" id="username">
+						</div>
+						<div class="innercont">
+							<label>전공</label>
+							<input type="text" name="username" id="username">
+						</div>
+						<div class="innercont">
+							<label>재학기간</label>
+							<input type="text" name="username" id="username">
+						</div>
+					</div>
+					<hr>
+					
+					<div class = "cont">
+						<div class="innercont">
+
+							<label style="display: flex; justify-content: center;align-items: center; width: 110px;">경력사항 및 자격증</label>
+							<div class ="careerArea" id="careerArea" >
+								<input type="text" class="career" name="career" id="career" style=" display:inline-block; width: 70%;">
+								<button type="button" class="del" id="del" style="color: #434343;" onclick="del();" >×</button>
+							</div>
+							<button class="add" id="add" type="button">추가</button>
+						</div>
+						<div class="innercont">
+							<label>기타사항</label>
+							<textarea style="width: 70%;"></textarea>
+						</div>
+						
+					</div>
+					<hr>
+					<div class="input_group" align="right">
+						<input type="submit" name="save" value="저장"  class="save" id="save" />
+						<input type="reset" name="button2" value="초기화" style="margin-left: 20px"/>
+					</div>
+				</fieldset>
+			</form>
 			</div>
 		</div>
 	</div>
 </body>
 	<script src="../header.js"></script>
+	
+	<script >
+	//		id는 나중에 벡엔드할때 만들어서 가져오는 방식으로 하기
+		var tbl = `<input type="text" class="career" name="career" id="career" style=" display:inline-block; width: 70%;">
+			<button type="button" class="del" id="del" style="color: #434343;" onclick="del();">×</button>`;
+		$("#add").click(function() {
+			$("#careerArea").append(tbl);
+	  	});
+		
+		
+		function del() {
+			//삭제 구현해야함
+		}
+	</script>
+	
 </html>
