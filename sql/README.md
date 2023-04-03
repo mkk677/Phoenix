@@ -32,7 +32,7 @@
 - 연락처 - member테이블 접근해서 하는걸로
 - 주소 -  addr (api없이진행하는걸로)
 - 이메일 - member테이블 접근해서 하는걸로
-- 최종학력 - level
+- 최종학력 - history
 - 학교명 - school
 - 전공 - major
 - 재학기간 - term
