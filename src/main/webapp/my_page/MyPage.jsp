@@ -79,37 +79,37 @@ button:hover {
 		<!-- html day10 form5 -->
 			<form name="" name="rejoin_form" id="rejoin_form">
 				<fieldset>
-					<legend>Login inform</legend>
+					<legend>로그인 정보</legend>
 					<div>
-						<label>User Name</label>
+						<label>아이디</label>
 						test123
-						<input type="button" value="edit" onclick="location.href='changename.jsp'"> 
 					</div>
 					<hr>
 					<div>
-						<label>Password</label>
-						<input type="button" value="edit" onclick="location.href='changepw.jsp'">
+						<label>비밀번호</label>
+						<input type="button" value="바로가기" onclick="location.href='changepw.jsp'">
 					</div>
-				</fieldset>		
+				</fieldset>	
+				<br>	
 				<fieldset>
-					<legend>User inform</legend>
+					<legend>연락처 정보</legend>
 					<div>
-						<label>E-mail</label>
+						<label>이메일</label>
 						<input type="text" name="useremail" id="useremail" value="abc@gmail.com" readonly>
-						<input type="button" value="edit" onclick="javascript:updateEmail('${useremail }')">
+						<input type="button" value="수정" onclick="javascript:updateEmail('${useremail }')">
 					</div>
 					<hr>
 					
 					<div>
-						<label>Phone</label>
+						<label>전화번호</label>
 						<input type="text" name="userphone" id="userphone" value="01012345678" readonly>
-						<input type="button" value="edit" onclick="javascript:updatePhone('${userphone }')">
+						<input type="button" value="수정" onclick="javascript:updatePhone('${userphone }')">
 					</div>
 					<hr>
 					
 					<div class="input_group" align="right">
-						<input type="submit" name="button" value="finish" />
-						<input type="button" name="button2" value="cancel" style="margin-left: 20px"/>
+						<input type="submit" name="button" value="수정하기" />
+						<input type="reset" name="button2" value="초기화" style="margin-left: 20px"/>
 					</div>
 				</fieldset>
 			</form>
