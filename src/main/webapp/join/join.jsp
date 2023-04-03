@@ -7,7 +7,6 @@
 <title>Join</title>
 <!-- <link rel="stylesheet" href="/division.css"> -->
 <style >
-body {font-family: Arial, Helvetica, sans-serif; }
 
 div {
 	width: 100%;
@@ -42,11 +41,11 @@ label{
 	width: 80px;
 	padding: 5px;
 }
-label.re{width: 140px; margin-left: 70px;}
+label.re{width: 140px; margin-left: 90px;}
 
 input[type=button],input[type=submit],input[type=reset] {
 	display:inline-block;
-	width: 60px;
+	width: 70px;
 	background-color: #434343;
 	color: white;
 	padding: 5px 5px;
@@ -79,37 +78,37 @@ button:hover {
 		<!-- html day10 form5 -->
 			<form name="join_form" id="join_form">
 				<fieldset>
-					<legend >Join</legend>
+					<legend >회원가입</legend>
 					<div>
-						<label>User Name</label>
+						<label>아아디</label>
 						<input type="text" name="username" id="username">
-						<input type="button" value="check" onclick=""> 
+						<input type="button" value="중복확인" onclick=""> 
 					</div>
 					<hr>
 					<div>
-						<label>Password</label>
+						<label>비밀번호</label>
 						<input type="password" name="userpw" id="userpw">
 						
-						<label class="re">Re-enter password</label>
-						<input type="password" name="userpwre" id="userpwre">
+						<label class="re">비밀번호 확인</label>
+						<input type="password" name="userpwre" id="userpwre" style="margin-left: -40px !important;">
 					</div>
 					<hr>
 					
 					<div>
-						<label>E-mail</label>
+						<label>이메일</label>
 						<input type="text" name="useremail" id="useremail" >
 					</div>
 					<hr>
 					
 					<div>
-						<label>Phone</label>
+						<label>연락처</label>
 						<input type="text" name="userphone" id="userphone">
 					</div>
 					<hr>
 					
 					<div class="input_group" align="right">
-						<input type="submit" name="button" value="finish" />
-						<input type="reset" name="button2" value="reset" style="margin-left: 20px"/>
+						<input type="submit" name="button" value="가입하기" />
+						<input type="reset" name="button2" value="초기화" style="margin-left: 20px"/>
 					</div>
 				</fieldset>
 			</form>
