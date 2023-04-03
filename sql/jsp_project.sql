@@ -14,7 +14,7 @@ CREATE TABLE "member"(
 	mnum 		varchar2(10) PRIMARY KEY,
    userid       varchar2(10) ,
    userpw      	varchar2(30),
-   username   	varchar2(50),
+   useremail   	varchar2(50),
    userphone   	varchar2(20)
 );
 
