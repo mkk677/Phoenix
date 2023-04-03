@@ -47,7 +47,7 @@
 		
 		<div class = "right" >
 			<div class="content" id="content">
-				<h1>포토폴리오</h1>
+				<h1>포트폴리오</h1>
 			</div>
 			<button class="add" id="add" onclick="location='add.jsp'">추가</button>
 		</div>

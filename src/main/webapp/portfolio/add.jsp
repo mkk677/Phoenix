@@ -102,7 +102,7 @@
 				<form method="post" name="boardForm">
 					<table style="width: 900px; border: 0px;">
 						<tr align="center" valign="middle">
-							<td><h1>포토폴리오</h1></td>
+							<td><h1>포트폴리오</h1></td>
 						</tr>
 					</table>
 					<table border="1" style="border-collapse:collapse;background-color:white;">
