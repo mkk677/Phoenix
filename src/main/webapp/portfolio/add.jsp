@@ -120,18 +120,18 @@
 						</tr>
 						<!-- 링크 -->
 						<tr>
-							<td class="form-group">
+							<td class="form-group" >
 								<input type="text" id="url-input" placeholder="  URL 추가">
 							</td>
 						</tr>
 						<!-- 이미지 -->
 						<tr>
 							<td>
-								<div id="image_container"></div>
-								<div class="filebox">
-								    <input class="upload-name" placeholder="첨부파일">
-								    <label for="file">파일찾기</label> 
-								    <input type="file" id="file" onchange="setThumbnail(event);">
+								<div id="image_container" ></div>
+								<div class="filebox" style="display: flex; padding-right : 5px;">
+								    <input class="upload-name" placeholder="첨부파일" style="border: none;">
+								    <label for="file" style="padding-left: 14px;">파일찾기</label> 
+								    <input type="file" id="file" onchange="setThumbnail(event);" > 
 								</div>
 							</td>
 						</tr>
