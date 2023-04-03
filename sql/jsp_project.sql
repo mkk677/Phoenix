@@ -26,7 +26,32 @@ SELECT * FROM "member";
 
 
 --------------------portfolio 테이블--------------------
+CREATE SEQUENCE 	portfolio_seq
+	START WITH 		10000
+	INCREMENT BY 	1
+	NOCACHE;
 
+CREATE TABLE portfolio(
+	pnum			   varchar2(10) PRIMARY KEY ,	
+	ptitle			varchar2(225),
+	pcontents		CLOB,
+	purl			   varchar2(225),
+	ppath			   varchar2(225),
+	mnum			   varchar2(10),
+	CONSTRAINT		mnum_fkey	FOREIGN KEY(mnum)
+	REFERENCES 		"member"(mnum)
+);
+
+INSERT INTO portfolio
+	VALUES 	(portfolio_seq.nextval, 
+			   'Portfolio Title', 
+			   'Portfolio Content', 
+			   'http://example.com', 
+			   '/path/to/file', 
+			   10000
+            );
+
+SELECT * FROM portfolio;
 
 
 
