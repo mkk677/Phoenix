@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style >
-body {font-family: Arial, Helvetica, sans-serif; }
+
 /*선택시 박스표시 없앰*/
 *:focus {
     outline: 0;
@@ -55,7 +55,7 @@ table {
 	height: 300px;
 	background-color: #ffffff;
 	margin: auto;
-	margin-top: 10px;
+	margin-top: 30px;
 };
 
 tr.row1{
@@ -86,8 +86,8 @@ input[type=text] ,textarea{
 	width: 98%;
 	height: 98%;
 	border: none;
-	font-size: 17px;
-	font-family: sans-serif;
+	font-size: 15px;
+	font-family: 'Gowun Batang';
 }
 
 
@@ -103,7 +103,7 @@ input[type=text] ,textarea{
 		
 		<div class = "right" id="right" align="center">
 			<div class="content" id="content">
-			<h1>자기소개서</h1>
+			<h1 style="font-family: 'Gowun Batang';">자기소개서</h1>
 			<!--
 				<table border="1">
 					<tr class="row1">
@@ -121,8 +121,8 @@ input[type=text] ,textarea{
 			-->
 			
 			</div>
-			<button class="add" id="add" >add</button>
-			<button class="save" id="save" >save</button>
+			<button class="add" id="add" >추가</button>
+			<button class="save" id="save" >저장</button>
 		</div>
 	</div>
 </body>
