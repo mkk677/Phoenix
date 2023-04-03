@@ -87,7 +87,7 @@ input[type=text] ,textarea{
 	height: 98%;
 	border: none;
 	font-size: 15px;
-	font-family: 'Gowun Batang';
+	padding: 10px;	
 }
 
 
@@ -104,11 +104,11 @@ input[type=text] ,textarea{
 		<div class = "right" id="right" align="center">
 			<div class="content" id="content">
 			<h1 style="font-family: 'Gowun Batang';">자기소개서</h1>
-			<!--
+<!-- 
 				<table border="1">
 					<tr class="row1">
 						<td class="col1">
-							<input type="text" class="item" placeholder="항목 입력">
+							<input type="text" class="item" placeholder="항목 입력" ">
 						</td>
 						<td class="col2"> <button class="X">×</button> </td>
 					</tr>
@@ -118,7 +118,7 @@ input[type=text] ,textarea{
 						</td>
 					</tr>
 				</table>
-			-->
+ -->
 			
 			</div>
 			<button class="add" id="add" >추가</button>
@@ -135,13 +135,13 @@ input[type=text] ,textarea{
 		var tbl = `<table border="1" class="`+ classes[0] +`" id="`+ classes[0] +`">
 							<tr class="row1">
 							<td class="col1">
-								<input type="text" class="item" placeholder="항목 입력">
+								<input type="text" class="item" placeholder="항목 입력" >
 							</td>
 							<td class="col2"> <button class="X" id="`+ classes[0] +`" onclick="del();">×</button> </td>
 						</tr>
 						<tr class="row2">
 							<td colspan="2">
-								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;"></textarea>
+								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none; padding-top: 30px;" ></textarea>
 							</td>
 						</tr>
 					</table>`;
