@@ -18,6 +18,25 @@
 		width: 80%;
 		float: right;
 	}
+	div.content{
+		margin: 0 auto;
+		text-align: center;
+	}
+	/* 추가 버튼 */
+	button.add{
+		margin-top: 10px;
+		display:inline-block;
+		width: 60px;
+		background-color: #434343;
+		color: white;
+		padding: 5px 5px;
+		border: none;
+		cursor: pointer;
+		margin-left: 10px;
+		margin-right: 10px;
+		display: block;
+		margin: 8px auto;
+	}
 </style>
 </head>
 <body>
@@ -27,7 +46,10 @@
 		</div>
 		
 		<div class = "right" >
-			<button type="button" onclick="location='add.jsp'">추가</button>
+			<div class="content" id="content">
+				<h1>포토폴리오</h1>
+			</div>
+			<button class="add" id="add" onclick="location='add.jsp'">추가</button>
 		</div>
 	</div>
 </body>

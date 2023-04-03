@@ -8,7 +8,7 @@
 <style>
 	table{
 		margin:0 auto;
-		width:900px;
+		width: 80%;
 	}
 	div.all {
 		width: 100%;
@@ -22,13 +22,73 @@
 		float: right;
 	}
 	#title{
-		width: 94%;
-		height: 100px;
-	}
-	#url-input{
-		width: 94%;
 		height: 50px;
 	}
+	#board{
+		width:	98%;
+		height:	300px;
+		resize: none;
+	}
+	#url-input{
+		height: 50px;
+	}
+	/* 파일 */
+	.filebox .upload-name {
+	    display: inline-block;
+	    height: 40px;
+	    padding: 0 10px;
+	    vertical-align: middle;
+	    border: 1px solid #dddddd;
+	    width: 90%;
+	    color: #999999;
+	}
+	.filebox label {
+		margin-top: 10px;
+		display:inline-block;
+		width: 60px;
+		background-color: #434343;
+		color: white;
+		padding: 5px 5px;
+		border: none;
+		cursor: pointer;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin: 8px auto;
+	}
+	.filebox input[type="file"] {
+	    position: absolute;
+	    width: 0;
+	    height: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    border: 0;
+	}
+	
+	/* 저장 버튼 */
+	button.save{
+		margin-top: 10px;
+		display:inline-block;
+		width: 60px;
+		background-color: #434343;
+		color: white;
+		padding: 5px 5px;
+		border: none;
+		cursor: pointer;
+		margin-left: 10px;
+		margin-right: 10px;
+		display: block;
+		margin: 8px auto;
+	}
+	
+	/* 텍스트 */
+	input[type=text] ,textarea{
+		background-color:#00ff0000;
+		width: 98%;
+		border: none;
+		font-size: 15px;
+		outline:none;
+	}
+
 </style>
 </head>
 <body>
@@ -39,80 +99,51 @@
 		
 		<div class = "right" >
 			<div>
-				<form method="post" name="boardForm" 
-					action="${pageContext.request.contextPath}/board/BoardWriteOK.bo">
+				<form method="post" name="boardForm">
 					<table style="width: 900px; border: 0px;">
 						<tr align="center" valign="middle">
-							<td><h3>포토폴리오</h3></td>
+							<td><h1>포토폴리오</h1></td>
 						</tr>
 					</table>
-					<table border="1" style="border-collapse:collapse;">
+					<table border="1" style="border-collapse:collapse;background-color:white;">
 						<!-- 제목 -->
-						<tr height="100px">
-							<th align="center" width="150px">
-								제 목
-							</th>
+						<tr height="50px">
 							<td>
-								<input type="text" id="title" name="title" required>
+								<input type="text" id="title" placeholder="  제목">
 							</td>
 						</tr>
 						<!-- 내용 -->
 						<tr height="300px">
-							<th align="center" width="150px">
-								내 용
-							</th>
 							<td>
-								<textarea name="boardcontents" style="width:700px;height:250px;"></textarea>					
+								<textarea id="board" placeholder="  내용"></textarea>					
 							</td>
 						</tr>
 						<!-- 링크 -->
 						<tr>
-							<th align="center" width="150px">
-								URL 추가
-							</th>
 							<td class="form-group">
-								<input type="text" id="url-input" name="url" required>
+								<input type="text" id="url-input" placeholder="  URL 추가">
 							</td>
 						</tr>
 						<!-- 이미지 -->
-						<tr height="300px">
-							<th align="center" width="150px">
-								이미지 추가
-							</th>
-							<td class="form-group">
+						<tr>
+							<td>
 								<div id="image_container"></div>
-								<input class="form-control form-control-user" type="file" name="product_image" id="product_image" onchange="setThumbnail(event);">
+								<div class="filebox">
+								    <input class="upload-name" placeholder="첨부파일">
+								    <label for="file">파일찾기</label> 
+								    <input type="file" id="file" onchange="setThumbnail(event);">
+								</div>
 							</td>
 						</tr>
 					</table>
 					<!-- 저장 -->
-					<table style="border: 0px;">
-						<tr align="right" valign="middle">
-							<td>
-								<a href="http://localhost:8081/portfolio/portfolio.jsp">[저장]</a>
-								&nbsp;&nbsp;&nbsp;
-							</td>
-						</tr>
-					</table>
+					<button class="save" id="save" >저장</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </body>
-<script src="../header.js"></script>
-<script>
-//이미지 미리보기
-	function setThumbnail(event){
-		var reader = new FileReader();
-			
-		reader.onload = function(event){
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			img.setAttribute("class", "col-lg-6");
-			document.querySelector("div#image_container").appendChild(img);
-		};
-			
-		reader.readAsDataURL(event.target.files[0]);
-	}
-</script>
+	<script src="../header.js"></script>
+	<!-- 이미지 미리보기, 파일명 출력 -->
+	<script src="./file_path.js"></script>
 </html>
