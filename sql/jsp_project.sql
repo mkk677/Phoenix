@@ -31,7 +31,25 @@ SELECT * FROM "member";
 
 
 --------------------coverletter 테이블--------------------
+CREATE TABLE coverletter(
+	cnum		varchar2(10) PRIMARY KEY ,	
+	ctitle		varchar2(300),
+	ccontents	varchar2(1500),
+	mnum		varchar2(10),
+	CONSTRAINT	mnum_fk	FOREIGN KEY(mnum)
+	REFERENCES "member"(mnum)
+);
 
+CREATE SEQUENCE cnum_seq
+START WITH 100
+INCREMENT BY 1
+nocache
+;
+
+INSERT INTO coverletter 
+VALUES (cnum_seq.nextval,'test','test', 10000);
+
+SELECT * FROM coverletter;
 
 
 --------------------resumes 테이블--------------------
