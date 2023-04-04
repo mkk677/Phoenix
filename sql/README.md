@@ -1,15 +1,14 @@
 시퀀스는 10000부터 시작
 
 ### member
-- 멤버고유번호 - mnum , 시퀀스자동생성
-- 아이디 - userid
+- 아이디 - userid , primary key , 유일키
 - 비밀번호 - userpw
 - 이메일 - useremail
 - 휴대폰번호 - userphone
 <br>
 
 ###  portfolio
-- 멤버고유번호 - mnum , 멤버에따라 자동생성
+- 멤버고유번호 - userid , 멤버에따라 자동생성
 - 포폴번호 - pnum , 시퀀스자동생성
 - 제목 - ptitle
 - 내용 - pcontents
@@ -18,14 +17,14 @@
 <br>
 
 ### coverletter
-- 멤버고유번호 - mnum , 멤버에따라 자동생성
+- 멤버고유번호 - userid , 멤버에따라 자동생성
 - 항목번호 - cnum , 시퀀스자동생성
 - 제목 - ctitle
 - 내용 - ccontents
 <br>
 
 ### resumes
-- 멤버고유번호 - mnum , 멤버에따라 자동생성
+- 멤버고유번호 - userid , 멤버에따라 자동생성
 - 이름 - username
 - 생년월일 - birth
 - 성별 - gender
