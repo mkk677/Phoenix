@@ -36,9 +36,9 @@ CREATE TABLE portfolio(
 	pcontents		CLOB,
 	purl			   varchar2(225),
 	ppath			   varchar2(225),
-	mnum			   varchar2(10),
-	CONSTRAINT		mnum_fkey	FOREIGN KEY(mnum)
-	REFERENCES 		"member"(mnum)
+	userid			   varchar2(10),
+	CONSTRAINT		mnum_fkey	FOREIGN KEY(userid)
+	REFERENCES 		"member"(userid)
 );
 
 INSERT INTO portfolio
@@ -47,7 +47,7 @@ INSERT INTO portfolio
 			   'Portfolio Content', 
 			   'http://example.com', 
 			   '/path/to/file', 
-			   10000
+			   'user'
             );
 
 SELECT * FROM portfolio;
