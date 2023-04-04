@@ -19,6 +19,8 @@ div.right {
 	width: 80%;
 	float: right;
 }
+
+
 </style>
 </head>
 <body>
@@ -28,11 +30,10 @@ div.right {
 		</div>
 		
 		<div class = "right" >
-			<script>
-			location.href ="/login/login.jsp";
-		</script>
+			로그아웃 아직 구현안함
 		</div>
 	</div>
 </body>
 <script src="/header.js"></script>
+
 </html>

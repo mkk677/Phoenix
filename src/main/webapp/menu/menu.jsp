@@ -1,3 +1,6 @@
+<%@page import="com.phoenix.user.dao.UserDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -200,6 +203,36 @@ ul ul a {
 </style>
 
 </head>
+
+<%
+	String loginhref = "/login/login.jsp";
+	String portfoliohref = "#";
+	String coverletterhref = "#";
+	String resumeshref = "#";
+	String mypagehref = "#";
+	String avalue = "로그인"; 
+	
+	//세션에서 로그인 정보 가져오기
+	UserDTO member = (UserDTO)session.getAttribute("session_member");
+	
+	if(member==null){
+		//로그인x
+		portfoliohref = "/menu/menucontroller.jsp";
+		coverletterhref ="/menu/menucontroller.jsp";
+		resumeshref = "/menu/menucontroller.jsp";
+		mypagehref = "/menu/menucontroller.jsp";
+	}else{
+		//로그인o
+		loginhref = "/logout/logout.jsp";
+		portfoliohref = "/portfolio/portfolio.jsp";
+		coverletterhref = "/cover_letter/cover_letter.jsp";
+		resumeshref = "/resume/resume.jsp";
+		mypagehref = "/my_page/MyPage.jsp";
+		avalue = "로그아웃";
+	}
+
+%>
+
 <body>
 <!-- BEGIN Wrapper -->
 <div class="wrapper">
@@ -213,19 +246,19 @@ ul ul a {
 		<h1 class="site-title" align="center" style="font-family:'Arvo' ,sans-serif !important; font-weight: 500;">
 		Phoenix </h1>
 		<p>
-			<a href="/login/login.html">로그인</a>
+			<a href="<%=loginhref %>" id="menulogin" class = "menulogin" name="menulogin"><%=avalue %></a>
 		</p>
 		<li>
-			<a href="#">포트폴리오</a>
+			<a href="<%=portfoliohref %>" id="menuportfolio" class = "menuportfolio" name="menuportfolio">포트폴리오</a>
 		</li>
 		<li>
-			<a href="/cover_letter/cover_letter.jsp">자기소개서</a>
+			<a href="<%=coverletterhref %>" id="menucoverletter" class = "menucoverletter" name="menucoverletter">자기소개서</a>
 		</li>
 		<li>
-			<a href="#">이력서</a>
+			<a href="<%=resumeshref %>" id="menuresumes" class = "menuresumes" name="menuresumes">이력서</a>
 		</li>
 		<li>
-			<a href="#">내정보</a>
+			<a href="<%=mypagehref %>" id="menumypage" class = "menumypage" name="menumypage">내정보</a>
 		</li>
 	</ul>
 	

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,19 +104,19 @@ span.psw {
 	</div>
 
 	<div class = "right">
-		<form action="#" method="post" >
-
+	
+		<form action="/login/logincheck.jsp" method="post" id="frm" class="frm" name="frm" >
 		   	<div class="idArea">
-			   	<label for="userid"><b>아이디</b></label>
-			    <input type="text" placeholder="아이디 입력" name="username" required>
+			   	<label for="userid" ><b>아이디</b></label>
+			    <input  type="text" placeholder="아이디 입력" name="userid"  id="userid" class="userid" required>
 		   	</div>
 		
 		    <div class="pwArea">
 			    <label for="userpw"><b>비밀번호</b></label>
-			    <input type="password" placeholder="비밀번호 입력" name="userpw" required>
+			    <input type="password" placeholder="비밀번호 입력" name="userpw"  id="userpw" class="userpw" required>
 		    </div>
 		        
-		    <button type="submit">로그인</button>
+		    <button type="submit" id="loginbtn" class="loginbtn" name="loginbtn" >로그인</button>
 		    
 		    <div align="right">
 		    	<a href="/join/join.jsp" class = "join" style="color: #434343 ; font-size: 18px; margin-right: 3px;" >회원가입</a>
@@ -123,9 +125,8 @@ span.psw {
 	
 		</form>
 		
-		
-		
 	</div>
+
 	
 </body>
 <script src="/header.js"></script>

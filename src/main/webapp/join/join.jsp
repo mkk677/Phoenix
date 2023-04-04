@@ -76,13 +76,13 @@ button:hover {
 		</div>
 		<div class = "right" >
 		<!-- html day10 form5 -->
-			<form name="join_form" id="join_form">
+			<form name="join_form" id="join_form" form action="/join/UserJoin.us" method="post">
 				<fieldset>
 					<legend >회원가입</legend>
 					<div>
 						<label>아이디</label>
-						<input type="text" name="username" id="username">
-						<input type="button" value="중복확인" onclick=""> 
+						<input type="text" name="userid" id="userid">
+						<input type="button" value="중복확인" onclick="checkId(join_form.userid.value)"> 
 					</div>
 					<hr>
 					<div>
@@ -120,6 +120,9 @@ button:hover {
     <!-- 정규표현식 검사 객체를 참조한다. -->
     <script src="regex.js"></script>
 <script >
+
+var n=0;
+
 $(function() {
     /** 가입폼의 submit 이벤트 */
     $("#join_form").submit(function(e) {
@@ -127,10 +130,11 @@ $(function() {
         e.preventDefault();
 
         /** 아이디 검사 */
-        if (!regex.value('#username', '이름을 입력해주세요')) { return false; }
-        if (!regex.eng_num('#username', '이름은 영어와 숫자만 입력 가능합니다')) { return false; }
-        if (!regex.min_length('#username', 4, '이름은 최소4자이상 입력해주세요 ')) { return false; }
-        if (!regex.max_length('#username', 20, '이름은 최대 10자 까지만 입력 가능합니다.')) { return false; }
+        if (!regex.value('#userid', '아이디를 입력해주세요')) { return false; }
+        if (!regex.eng_num('#userid', '아이디는 영어와 숫자만 입력 가능합니다')) { return false; }
+        if (!regex.min_length('#userid', 4, '아이디는 최소4자이상 입력해주세요 ')) { return false; }
+        if (!regex.max_length('#userid', 9, '아이디는 최대 9자 까지만 입력 가능합니다.')) { return false; }
+        if(n==0){alert("아이디 중복확인을 먼저 해주세요!");return false;}
 
         /** 비밀번호 검사 */
         if (!regex.value('#userpw', '비밀번호를 입력하세요.')) { return false; }
@@ -148,10 +152,41 @@ $(function() {
         if (!regex.phone('#userphone', '연락처가 잘못되었습니다.')) { return false; }
 
         // 처리 완료
-        alert("가입완료!!");
+//         alert("가입완료!!");
+        let frm = document.join_form;
+        frm.submit();
+        
+        
     });
 });
+
+function checkId(userid){
+//	alert(data);	
 	
+	if(userid == ""){
+		alert("아이디를 입력해주세요");
+		return false;
+	}else{
+		//ajax통신
+		let xhr = new XMLHttpRequest();
+		xhr.open("GET","idcheck.jsp?userid="+userid,true);
+		xhr.send();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.responseText.trim() == "ok"){
+					alert("사용가능 아이디 입니다.");
+					n += 1;
+				}else{
+					alert("이미 사용중인 아이디 입니다.");
+					n=0;
+				}
+				
+			}
+		}
+	}
+	
+	
+}
 	
 	
 </script>
