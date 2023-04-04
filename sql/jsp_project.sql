@@ -90,9 +90,9 @@ CREATE TABLE resumes(
 	term			varchar2(30),
 	career			varchar2(200),
 	etc				varchar2(200),
-	mnum			varchar2(100),
-	CONSTRAINT		mnum_fk	FOREIGN KEY(mnum)
-	REFERENCES 		"member"(mnum)
+	userid			varchar2(10),
+	CONSTRAINT		userid_fkey	FOREIGN KEY(userid)
+	REFERENCES 		"member"(userid)
 );
 
 
@@ -107,7 +107,6 @@ nocache
 
 
 INSERT INTO resumes
-	VALUES (rnum_seq.nextval, 'test','20230303','test','seoul','test','sky','java','20232023','test','test','10000');
-
+	VALUES (rnum_seq.nextval, 'test','20230303','test','seoul','test','sky','java','20232023','test','test','person');
 
 
