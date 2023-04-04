@@ -80,7 +80,7 @@ SELECT * FROM coverletter;
 --------------------resumes 테이블--------------------
 
 CREATE TABLE resumes(
-	runm			varchar2(10) PRIMARY KEY,
+	rnum			varchar2(10) PRIMARY KEY,
 	username		varchar2(20),
 	birth			varchar2(10),
 	gender			varchar2(10),
@@ -90,7 +90,7 @@ CREATE TABLE resumes(
 	major			varchar2(20),
 	term			varchar2(30),
 	career			varchar2(200),
-	etc			varchar2(200),
+	etc				varchar2(200),
 	mnum			varchar2(100),
 	CONSTRAINT		mnum_fk	FOREIGN KEY(mnum)
 	REFERENCES 		"member"(mnum)
@@ -100,12 +100,16 @@ CREATE TABLE resumes(
 SELECT * FROM resumes;
 
 
-CREATE SEQUENCE resumes_seq
-START WITH 	1000
+CREATE SEQUENCE rnum_seq
+START WITH 1000
 INCREMENT BY 1
-nocache;
+nocache
+;
 
 
 INSERT INTO resumes
-	VALUES (resumes_seq.nextval, 'test','20230303','test','seoul','test','sky','java','20232023','test','test','10000');
+	VALUES (rnum_seq.nextval, 'test','20230303','test','seoul','test','sky','java','20232023','test','test','10000');
+
+
+
 
