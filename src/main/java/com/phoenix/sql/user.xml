@@ -14,6 +14,19 @@
 	<select id="login" parameterType= "hashmap" resultType="com.phoenix.user.dao.UserDTO">
 		SELECT * FROM "member" WHERE userid = #{userid} AND userpw=#{userpw} 
 	</select>
+	
+	<update id="editMyPage" parameterType= "hashmap">
+		UPDATE "member" SET USEREMAIL = #{useremail}, USERPHONE = #{userphone} WHERE userid = #{userid}
+	</update>
+	
+	<select id="getinform" parameterType= "string" resultType="userdto">
+		SELECT * FROM "member" WHERE USERID = #{userid}
+	</select>
+	
+	<update id="editPassword" parameterType= "hashmap">
+		UPDATE "member" SET USERPW = #{userpw} WHERE userid = #{userid}
+	</update>
+
 </mapper>
 
 

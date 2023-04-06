@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,48 +73,60 @@ button:hover {
 </style>
 </head>
 <body>
+	<c:set var="member" value="${requestScope.member }"/>
+<%-- 	<c:set var="member" value="${requestScope.list }"/> --%>
 	<div class = "all">
 		<div class = "left">
 			<header ></header>
 		</div>
 		<div class = "right" >
 		<!-- html day10 form5 -->
-			<form name="" name="rejoin_form" id="rejoin_form">
-				<fieldset>
-					<legend>로그인 정보</legend>
-					<div>
-						<label>아이디</label>
-						test123
-					</div>
-					<hr>
-					<div>
-						<label>비밀번호</label>
-						<input type="button" value="바로가기" onclick="location.href='changepw.jsp'">
-					</div>
-				</fieldset>	
-				<br>	
-				<fieldset>
-					<legend>연락처 정보</legend>
-					<div>
-						<label>이메일</label>
-						<input type="text" name="useremail" id="useremail" value="abc@gmail.com" readonly>
-						<input type="button" value="수정" onclick="javascript:updateEmail('${useremail }')">
-					</div>
-					<hr>
-					
-					<div>
-						<label>전화번호</label>
-						<input type="text" name="userphone" id="userphone" value="01012345678" readonly>
-						<input type="button" value="수정" onclick="javascript:updatePhone('${userphone }')">
-					</div>
-					<hr>
-					
-					<div class="input_group" align="right">
-						<input type="submit" name="button" value="수정하기" />
-						<input type="reset" name="button2" value="초기화" style="margin-left: 20px"/>
-					</div>
-				</fieldset>
-			</form>
+		<c:choose>
+      		<c:when test="${member != null and fn:length(member) > 0}">
+      	 		<c:forEach var="member" items="${member }">
+					<form action="${pageContext.request.contextPath }/my_page/MyPage.my?userid="+${member.userid } name="rejoin_form" id="rejoin_form">
+						<fieldset>
+							<legend>로그인 정보</legend>
+							<div>
+								<label>아이디</label>
+								${member.userid }
+							</div>
+							<hr>
+							<div>
+								<label>비밀번호</label>
+								<input type="button" value="바로가기" onclick="javascript:comparepw('${member.userid}','${member.userpw}')">
+							</div>
+						</fieldset>	
+						<br>	
+						<fieldset>
+							<input type="hidden" name="userid" value="${member.userid }">
+							<legend>연락처 정보</legend>
+							<div>
+								<label>이메일</label>
+									<input type="text" name="useremail" id="useremail" value="${member.useremail}" readonly>
+									<input type="button" value="수정" onclick="javascript:updateEmailreadonly('${member.useremail}')" >
+							</div>
+							<hr>
+							
+							<div>
+								<label>전화번호</label>
+									<input type="text" name="userphone" id="userphone" value="${member.userphone}" readonly>
+									<input type="button" value="수정" onclick="javascript:updatePhonereadonly('${member.userphone}')" >
+							</div>
+							<hr>
+							
+							<div class="input_group" align="right">
+								 <input type="submit" name="button" value="수정하기" onclick="updateInform('${member.userid}','${member.useremail}','${member.userphone}')"/>
+								<input type="reset" name="button2" value="초기화" style="margin-left: 20px"/>
+							</div>
+						</fieldset>
+					</form>
+			</c:forEach>    
+		    </c:when>
+		    <c:otherwise>
+
+         	</c:otherwise> 	
+         </c:choose>
 		</div>
 	</div>
 </body>
@@ -121,6 +135,7 @@ button:hover {
     <!-- 정규표현식 검사 객체를 참조한다. -->
     <script src="regex.js"></script>
 <script >
+
 $(function() {
     /** 가입폼의 submit 이벤트 */
     $("#rejoin_form").submit(function(e) {
@@ -140,16 +155,47 @@ $(function() {
     });
 });
 	
-function updateEmail(useremail){
-	document.getElementById('useremail').readOnly = false;
-}	
-
-function updatePhone(userphone){
-	document.getElementById('userphone').readOnly = false;
-}	
+function updateEmailreadonly(useremail){
 	
-</script>
+	document.getElementById('useremail').readOnly = false;
 
-</html>
+
+}
+
+
+function updatePhonereadonly(userphone){
+	
+	document.getElementById('userphone').readOnly = false;
+
+}
+
+
+ 
+function updateInform(userid,useremail,userphone){
+	
+    document.rejoin_form.action 
+    = "${pageContext.request.contextPath }/my_page/edit.my?userid="+userid;  
+ 	document.rejoin_form.submit();
+ 	
+}
+
+function comparepw(userid, userpw){
+	
+	let pw = prompt("비밀번호를 입력해주세요")
+	
+	if( userpw == pw ){
+		
+	    document.rejoin_form.action 
+	       = "${pageContext.request.contextPath}/my_page/chkPassword.my?userid"+userid;  
+	    document.rejoin_form.submit();
+	       
+	} else {
+		alert("비밀번호를 확인해주세요");
+	}
+
+}
+
+
+</script>
 </body>
 </html>

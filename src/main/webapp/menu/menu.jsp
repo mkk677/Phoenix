@@ -209,7 +209,7 @@ ul ul a {
 	String portfoliohref = "#";
 	String coverletterhref = "#";
 	String resumeshref = "#";
-	String mypagehref = "#";
+	String mypagehref = "/my_page/MyPage.my";
 	String avalue = "로그인"; 
 	
 	//세션에서 로그인 정보 가져오기
@@ -227,7 +227,7 @@ ul ul a {
 		portfoliohref = "/portfolio/portfolio.jsp";
 		coverletterhref = "/cover_letter/cover_letter.jsp";
 		resumeshref = "/resume/resume.jsp";
-		mypagehref = "/my_page/MyPage.jsp";
+		mypagehref = "/my_page/MyPage.my";
 		avalue = "로그아웃";
 	}
 

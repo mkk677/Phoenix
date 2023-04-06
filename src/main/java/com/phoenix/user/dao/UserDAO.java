@@ -1,6 +1,8 @@
 package com.phoenix.user.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -52,7 +54,44 @@ public class UserDAO {
 	}
 	
 	
+	public boolean editMyPage(String userid, String useremail, String userphone) {
+		
+		boolean result = false;
+		
+		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("userid", userid);
+		datas.put("useremail", useremail);
+		datas.put("userphone", userphone);
+		
+		if( sqlsession.update("User.editMyPage", datas) == 1) {
+			result = true;
+		}
+		return result;
+	}
 
+	public List<UserDTO> getinform (String userid){
+		
+		List<UserDTO> list = new ArrayList<>();
+		
+		list = sqlsession.selectList("User.getinform", userid);
+			
+		return list;
+	}
+
+	public boolean editPassword(String userid, String userpw) {
+		
+		boolean result = false;
+		
+		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("userid", userid);
+		datas.put("userpw", userpw);
+		
+		if( sqlsession.update("User.editPassword", datas) == 1) {
+			result = true;
+		}
+		return result;
+	}
+	
 }
 
 
