@@ -73,12 +73,23 @@ public class CoverletterDAO {
 		return result;
 	}
 	
-	public boolean delCL(CoverletterDTO dto) {
-		boolean result = false;
-		System.out.println("=========jefhsdjil에들어옴====");
-		if(sqlsession.delete("User.delCoverLetter",dto) == 1) {
-			result = true;
+	public int delCL(CoverletterDTO dto) {
+		int result = 0; // 0 - 실패 1-있는정보삭제 2-빈테이블만삭제
+		
+		int cnt = 0;
+		cnt = sqlsession.selectOne("User.checkCoverLetter", dto);
+		System.out.println("==================cnt : "+cnt+"==================");
+		if( cnt == 1 ) {
+			System.out.println("=========1에들어옴====");
+			System.out.println("=========jefhsdjil에들어옴====");
+			if(sqlsession.delete("User.delCoverLetter",dto) == 1) {
+				result = 1;
+			}
+		}else {
+			result = 2;
 		}
+		
+		
 		
 		return result;
 	}

@@ -199,7 +199,7 @@ input[type=text] ,textarea{
 										</td>
 									</tr>
 								</table>
-								<button type="submit" class="save" id="save" onclick="save(`+ ids +`)">저장</button>`;//이거 코드 수정해야함
+								<button type="submit" class="save" id="save`+ ids +`" onclick="save(`+ ids +`)">저장</button>`;//이거 코드 수정해야함
 								
 				$("#content").append(DBtableCode[i]);
 				//디비에서 내용 가져와서 적용하기
@@ -240,7 +240,7 @@ input[type=text] ,textarea{
 							</td>
 						</tr>
 					</table>
-					<button type="submit" class="save" id="save" onclick="save(`+ String(tableNum) +`)">저장</button>`;//이거 코드 수정해야함
+					<button type="submit" class="save" id="save`+ String(tableNum) +`" onclick="save(`+ String(tableNum) +`)">저장</button>`;//이거 코드 수정해야함
 			sessionStorage.setItem("tableNum",tableNum+1);
 			
 			$("#content").append(tbl);
@@ -288,9 +288,15 @@ input[type=text] ,textarea{
 				if(xhr2.readyState == 4){
 					if(xhr2.responseText.trim() == "ok"){
 						$("#tb_"+cnum).remove();
+						$("#save"+cnum).remove();
 						alert("삭제됨");
-					}else{
+					}else if(xhr2.responseText.trim() == "not-ok"){
 						alert("삭제실패");
+					}else if(xhr2.responseText.trim() == "empty"){
+						sessionStorage.setItem("DBlen",sessionStorage.getItem("DBlen")-1);
+						$("#tb_"+cnum).remove();
+						$("#save"+cnum).remove();
+						alert("삭제됨");
 					}
 					
 				}
