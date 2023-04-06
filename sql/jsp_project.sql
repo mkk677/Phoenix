@@ -11,15 +11,14 @@ CREATE SEQUENCE mnum_seq
 
 
 CREATE TABLE "member"(
-	mnum 		varchar2(10) PRIMARY KEY,
-   userid       varchar2(10) ,
+   userid       varchar2(10) PRIMARY KEY,
    userpw      	varchar2(30),
    useremail   	varchar2(50),
    userphone   	varchar2(20)
 );
 
-INSERT INTO "member" VALUES (mnum_seq.NEXTVAL,'test','test','test','test');
-INSERT INTO "member" VALUES (mnum_seq.NEXTVAL,'test2','test2','test2','test2');
+INSERT INTO "member" VALUES (mnum_seq.NEXTVAL,'test','test','test');
+INSERT INTO "member" VALUES (mnum_seq.NEXTVAL,'test2','test2','test2');
 
 SELECT * FROM "member";
 
@@ -37,9 +36,9 @@ CREATE TABLE portfolio(
 	pcontents		CLOB,
 	purl			   varchar2(225),
 	ppath			   varchar2(225),
-	mnum			   varchar2(10),
-	CONSTRAINT		mnum_fkey	FOREIGN KEY(mnum)
-	REFERENCES 		"member"(mnum)
+	userid			   varchar2(10),
+	CONSTRAINT		mnum_fkey	FOREIGN KEY(userid)
+	REFERENCES 		"member"(userid)
 );
 
 INSERT INTO portfolio
@@ -48,7 +47,7 @@ INSERT INTO portfolio
 			   'Portfolio Content', 
 			   'http://example.com', 
 			   '/path/to/file', 
-			   10000
+			   'user'
             );
 
 SELECT * FROM portfolio;
@@ -60,9 +59,9 @@ CREATE TABLE coverletter(
 	cnum		varchar2(10) PRIMARY KEY ,	
 	ctitle		varchar2(300),
 	ccontents	varchar2(1500),
-	mnum		varchar2(10),
-	CONSTRAINT	mnum_fk	FOREIGN KEY(mnum)
-	REFERENCES "member"(mnum)
+	userid		varchar2(10),
+	CONSTRAINT	userid_fk	FOREIGN KEY(userid)
+	REFERENCES "member"(userid)
 );
 
 CREATE SEQUENCE cnum_seq
@@ -72,7 +71,7 @@ nocache
 ;
 
 INSERT INTO coverletter 
-VALUES (cnum_seq.nextval,'test','test', 10000);
+VALUES (cnum_seq.nextval,'test','test', 'admin');
 
 SELECT * FROM coverletter;
 
@@ -91,9 +90,9 @@ CREATE TABLE resumes(
 	term			varchar2(30),
 	career			varchar2(200),
 	etc				varchar2(200),
-	mnum			varchar2(100),
-	CONSTRAINT		mnum_fk	FOREIGN KEY(mnum)
-	REFERENCES 		"member"(mnum)
+	userid			varchar2(10),
+	CONSTRAINT		userid_fkey	FOREIGN KEY(userid)
+	REFERENCES 		"member"(userid)
 );
 
 
@@ -108,8 +107,6 @@ nocache
 
 
 INSERT INTO resumes
-	VALUES (rnum_seq.nextval, 'test','20230303','test','seoul','test','sky','java','20232023','test','test','10000');
-
-
+	VALUES (rnum_seq.nextval, 'test','20230303','test','seoul','test','sky','java','20232023','test','test','person');
 
 
