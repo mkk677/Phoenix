@@ -39,7 +39,7 @@ public class UserDAO {
 	}
 	
 	public UserDTO login(String userid,String userpw) {
-		System.out.println("================"+userid+"=========="+userpw+"=========");
+//		System.out.println("================"+userid+"=========="+userpw+"=========");
 		boolean result = false;
 		HashMap<String, String> datas = new HashMap<>();
 		datas.put("userid", userid);

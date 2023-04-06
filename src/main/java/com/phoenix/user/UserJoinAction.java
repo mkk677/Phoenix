@@ -34,7 +34,11 @@ public class UserJoinAction implements Action {
 			forward.setRedirect(true);
 		}
 		
+		
 		return forward;
+		
+		
+		
 	}
 
 	

@@ -104,57 +104,206 @@ input[type=text] ,textarea{
 		<div class = "right" id="right" align="center">
 			<div class="content" id="content">
 			<h1 style="font-family: 'Gowun Batang';">자기소개서</h1>
-<!-- 
-				<table border="1">
-					<tr class="row1">
-						<td class="col1">
-							<input type="text" class="item" placeholder="항목 입력" ">
-						</td>
-						<td class="col2"> <button class="X">×</button> </td>
-					</tr>
-					<tr class="row2">
-						<td colspan="2">
-							<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;"></textarea>
-						</td>
-					</tr>
-				</table>
- -->
-			
+<!--  
+					<table border="1" id="" class="" >
+						<tr class="row1">
+							<td class="col1">
+								<input type="text" class="ctitle" id="ctitle" name="ctitle" placeholder="항목 입력" >
+							</td>
+							<td class="col2"> <button class="X" >×</button> </td>
+						</tr>
+						<tr class="row2">
+							<td colspan="2">
+								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents" class="ccontents" name="ccontents"></textarea>
+							</td>
+						</tr>
+					</table>
+					<button type="submit" class="save" id="save" onclick="save()">저장</button>
+					-->
 			</div>
+			
 			<button class="add" id="add" >추가</button>
-			<button class="save" id="save" >저장</button>
 		</div>
 	</div>
 </body>
 
+		<%
+// 		int tableNum = 0;
+// 		session.setAttribute("tableNum", tableNum);
+// 		// 	tb_0~tb_19 총 20개의 테이블 아이디
+// 		String[] tb_ids = new String[20];
+// 		for(int i=0;i<tb_ids.length;i++){
+// 			tb_ids[i]="tb_"+Integer.toString(i);
+// 		}
+		%>
+		
+		
 	<script src="/header.js"></script>
 
 	<script >
-		var classes=["tbl1","tbl2"];
-// 		id는 나중에 벡엔드할때 만들어서 가져오는 방식으로 하기
-		var tbl = `<table border="1" class="`+ classes[0] +`" id="`+ classes[0] +`">
+	/////////////////////////////////////자소서 불러오는 부분//////////////////////////
+	// 데이터 불러와서 백틱배열만들어서 코드 저장하기
+	// 화면 랜더링 끝나고 나서 넣어야 잘들어갈거같아서...
+	
+	//문제 생겻다 - 수정이나 저장시 유저 아이디마다 테이블 아이디 0부터 적용
+	//일단 logout.jsp에 로그아웃시 tableNum 세션에서 삭제하는거 했음
+	// db.jsp 하나더 만들어서 로그인하듯이 디비 만지고 하는게 나을듯
+	
+		//ajax통신
+		var DBlen ;
+		var DBtableCode = [];
+		var tbDB = [];
+		let xhr1 = new XMLHttpRequest();
+		
+		xhr1.open("POST","load.jsp",true);
+		xhr1.send();
+		xhr1.onreadystatechange = function(){
+			if (xhr1.readyState == 4)  {
+			    const status = xhr1.status;
+			    if(status === 0 || (status >= 200 && status < 400)) {
+			      console.log('success...');
+			      var DB = xhr1.responseText.trim();
+			      tbDB = DB.split('/');
+			      DBlen = tbDB[0];
+			      sessionStorage.setItem("DBlen",DBlen);
+			      console.log("==================DBlen :"+DBlen+"asdfgsfh============");
+			      console.log("==================DBlen :"+tbDB[1]+"============");
+			      
+				  makeDBtable(DBlen,tbDB); //테이블 코드 생성
+			    } else {
+			      console.log('fail...');
+			    }
+			  }
+		}
+		function makeDBtable(len,tbDB) {
+// 			 console.log("==================len :"+len+"============");	
+			var recentid=0;
+			for (var i=0 ; i<len ; i++){
+				//tbDB[1] = tb_1&수정제목11&수정내용11
+// 				console.log("==================tbDB :"+tbDB[i]+"============");
+				var strs =tbDB[i+1].split('&');
+				var ids = strs[0].split('_')[1]; //테이블 번호
+				recentid = (recentid>parseInt(ids))?recentid : ids;
+				console.log("==================recentid :"+recentid+"============");
+				sessionStorage.setItem("DBlen",parseInt(recentid)+1); //마지막번호 다음번호를 넘겨주는것
+				DBtableCode[i] =  `<table border="1" id="`+ strs[0]+`" class="`+ strs[0] +`" >
+										<tr class="row1">
+										<td class="col1">
+											<input type="text" class="ctitle_`+ ids +`" id="ctitle_`+ ids +`" name="ctitle_`+ ids +`" placeholder="항목 입력" value="`+strs[1]+`">
+										</td>
+										<td class="col2"> <button class="X" onclick="del(`+ ids +`)">×</button> </td>
+									</tr>
+									<tr class="row2">
+										<td colspan="2">
+											<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ ids +`" class="ccontents_`+ ids +`" name="ccontents_`+ ids +`">`+strs[2]+`</textarea>
+										</td>
+									</tr>
+								</table>
+								<button type="submit" class="save" id="save" onclick="save(`+ ids +`)">저장</button>`;//이거 코드 수정해야함
+								
+				$("#content").append(DBtableCode[i]);
+				//디비에서 내용 가져와서 적용하기
+			
+			}
+		}
+	/////////////////////////////////////자소서 불러오는 부분끝//////////////////////////
+	
+		
+		function setNum(setid) {
+			sessionStorage.setItem("tableNum",setid);
+			alert(sessionStorage.getItem("tableNum"));
+			
+		}
+		
+		
+		sessionStorage.setItem("tableNum",0);
+		var tableNum = 0;
+		
+// 		자기소개서 불러올때는 아래와 다르게 클래스랑 아이디 부분에 디비에서 자겨온 고유 아이디로 넣기 - 디비고유아이디에 아래 tb_ids[String(tableNum)] 넣을예정
+//	  	저장버튼도 자기소개서마다 넣는걸로 바꿀까
+//		추가버튼 누를때마다 tableNum 증가되어 테이블 개수까지 알 수 있음
+		
+		$("#add").click(function() {
+			var DBlen2 = parseInt(sessionStorage.getItem("DBlen"));
+			tableNum = DBlen2;
+			sessionStorage.setItem("DBlen",DBlen2+1);
+			var tbl = `<table border="1" id="tb_`+ String(tableNum) +`" class="tb_`+ String(tableNum) +`" >
 							<tr class="row1">
 							<td class="col1">
-								<input type="text" class="item" placeholder="항목 입력" >
+								<input type="text" class="ctitle_`+ String(tableNum) +`" id="ctitle_`+ String(tableNum) +`" name="ctitle_`+ String(tableNum) +`" placeholder="항목 입력" ">
 							</td>
-							<td class="col2"> <button class="X" id="`+ classes[0] +`" onclick="del();">×</button> </td>
+							<td class="col2"> <button class="X" onclick="del(`+ String(tableNum) +`)">×</button> </td>
 						</tr>
 						<tr class="row2">
 							<td colspan="2">
-								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none; padding-top: 30px;" ></textarea>
+								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ String(tableNum) +`" class="ccontents_`+ String(tableNum) +`" name="ccontents_`+ String(tableNum) +`"></textarea>
 							</td>
 						</tr>
-					</table>`;
-		$("#add").click(function() {
+					</table>
+					<button type="submit" class="save" id="save" onclick="save(`+ String(tableNum) +`)">저장</button>`;//이거 코드 수정해야함
+			sessionStorage.setItem("tableNum",tableNum+1);
+			
 			$("#content").append(tbl);
 	  	});
+
+
+		//이미 있는 테이블에 저장할 경우 먼저 select로 디비에 있는 아이디 인지 확인해보고 있으면 내용 수정하는 sql쿼리 하기
 		
-		
-		function del() {
-			var element = document.getElementById(classes[0]);
-		    element.parentNode.removeChild(element);
-// 			alert("어거지로 구현함..");
+		function save(num){	//num은 테이블 번호 즉 몇번째 테이블인지 - 0부터 시작
+			var ctitlevalue = document.getElementById('ctitle_'+num).value;
+			var ccontentsvalue = document.getElementById('ccontents_'+num).value;
+// 			alert(ccontentsvalue);
+			
+			//ajax통신
+			
+			let xhr = new XMLHttpRequest();
+			
+			xhr.open("POST","savedb.jsp?ctitle="+ctitlevalue+"&ccontents="+ccontentsvalue+"&tableNum=tb_"+num,true);//tableNum 이 cnum임
+			xhr.send();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if(xhr.responseText.trim() == "ok"){
+						alert("저장됨");
+					}else{
+						alert("저장실패");
+					}
+					
+				}
+			}
 		}
+		
+		function del(cnum){	//num은 테이블 번호 즉 몇번째 테이블인지 - 0부터 시작
+// 			alert(cnum);
+// 			cnum = String(cnum);
+			//ajax통신
+			
+			let xhr2 = new XMLHttpRequest();
+			
+			xhr2.open("get","deldb.jsp?cnum=tb_"+cnum,true);
+			
+			xhr2.send();
+			
+			xhr2.onreadystatechange = function(){
+// 				console.log("==================POST ============");
+				if(xhr2.readyState == 4){
+					if(xhr2.responseText.trim() == "ok"){
+						$("#tb_"+cnum).remove();
+						alert("삭제됨");
+					}else{
+						alert("삭제실패");
+					}
+					
+				}
+			}
+		}
+		
+		
+		
+// 		function del() {
+// 			var element = document.getElementById(classes[0]);
+// 		    element.parentNode.removeChild(element);
+// // 			alert("어거지로 구현함..");
+// 		}
 		
 	</script>
 

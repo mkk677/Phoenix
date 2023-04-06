@@ -11,6 +11,9 @@ public class ActionForward {
 		super();
 		this.isRedirect = isRedirect;
 		this.path = path;
+		
+		
+		
 	}
 
 	public boolean isRedirect() {

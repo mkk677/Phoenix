@@ -28,9 +28,15 @@ div.right {
 		</div>
 		
 		<div class = "right" >
+		<%if(session.getAttribute("session_member")== null){ %>
 			<script>
-			location.href ="/login/login.jsp";
-		</script>
+				location.href ="/login/login.jsp";
+			</script>
+		<%} else{%>
+			<script>
+				location.href ="/portfolio/portfolio.jsp";
+			</script>
+		<%}%>	
 		</div>
 	</div>
 </body>

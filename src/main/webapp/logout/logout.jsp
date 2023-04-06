@@ -14,6 +14,10 @@
 		// session.invalidate();
 		response.sendRedirect("/login/login.jsp");
 	%>
+	<script >
+// 	sessionStorage.removeItem("tableNum");
+	sessionStorage.clear();
+	</script>
 </body>
 <script src="/header.js"></script>
 
