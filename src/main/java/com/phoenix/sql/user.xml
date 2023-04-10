@@ -7,6 +7,21 @@
 		INSERT INTO "member" VALUES (#{userid},#{userpw},#{useremail},#{userphone})
 	</insert>
 	
+	<insert id="savePortfolio" parameterType="PortfolioDTO">
+		INSERT INTO portfolio
+	VALUES 	(portfolio_seq.nextval, 
+			   #{ptitle}, 
+			   #{pcontents}, 
+			   #{purl}, 
+			   #{ppath}, 
+			   #{userid}
+            )
+	</insert>
+	
+	<select id="loadPortfol" parameterType="PortfolioDTO" resultType="PortfolioDTO">
+		SELECT * FROM portfolio WHERE userid=#{userid} AND pnum=#{pnum}
+	</select>
+	
 	<select id="loadResumes" parameterType="string"  resultType="ResumesDTO">
 		SELECT * FROM resumes WHERE userid=#{userid}
 	</select>
@@ -31,6 +46,10 @@
 	
 	<select id="loadCoverLetter" parameterType="coverletterdto" resultType="map">
 		SELECT *  FROM coverletter WHERE USERID = #{userid}
+	</select>
+	
+	<select id="loadPortfolios" parameterType="PortfolioDTO" resultType="map">
+		SELECT * FROM portfolio WHERE userid=#{userid}
 	</select>
 	
 	<select id="checkCoverLetterLen" parameterType="coverletterdto" resultType="_int">

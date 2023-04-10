@@ -7,6 +7,8 @@
 		<typeAlias type="com.phoenix.user.dao.UserDTO" alias="userdto"/>
 		<typeAlias type="com.phoenix.coverletter.dao.CoverletterDTO" alias="coverletterdto"/>
 		<typeAlias type="com.phoenix.resumes.ResumesDTO" alias="ResumesDTO"/>
+		<typeAlias type="com.phoenix.portfolio.PortfolioDTO" alias="PortfolioDTO"/>
+		
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
