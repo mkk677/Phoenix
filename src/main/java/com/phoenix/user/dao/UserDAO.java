@@ -23,7 +23,7 @@ public class UserDAO {
 		if(sqlsession.insert("User.join", user) == 1) {
 			result = true;
 		}
-		
+		sqlsession.insert("User.makeResumes", user);
 		return result;
 	}
 	

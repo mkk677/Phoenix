@@ -1,4 +1,3 @@
-<%@page import="com.phoenix.user.dao.UserDTO"%>
 <%@page import="com.phoenix.resumes.ResumesDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -161,12 +160,12 @@
 						</div>
 						<div class="innercont" >
 							<label >연락처</label>
-							<input type="text" name="userphone" id="userphone" class="userphone" disabled>
+							<input type="text" name="userphone" id="userphone" value="${Resumes.userphone }">
 						</div>
 						
 						<div class="innercont">
 							<label>이메일</label>
-							<input type="text" name="useremail" id="useremail" class="useremail" disabled>
+							<input type="text" name="useremail" id="useremail" value="${Resumes.useremail }">
 						</div>
 						
 					</div>
@@ -178,7 +177,7 @@
 						</div>
 						<div class="innercont">
 							<label>학교명</label>
-							<input type="text" name="school" id="school" value="${Resumes.school }">
+							<input type="text" name="school" id="school" value="${Resumes.hight }">
 						</div>
 						<div class="innercont">
 							<label>전공</label>
@@ -205,6 +204,7 @@
 					<hr>
 					<div class="input_group" align="right">
 						<input type="submit" name="save" value="저장"  class="save" id="save" />
+						<input type="reset" name="button2" value="초기화" style="margin-left: 20px"/>
 					</div>
 				</fieldset>
 			</form>
@@ -218,9 +218,7 @@
 	<script src="../header.js"></script>
 
 	<script >
-	<% ResumesDTO Res = (ResumesDTO)session.getAttribute("Resumes");
-	UserDTO userinf = (UserDTO)session.getAttribute("session_member");
-	%>
+	<% ResumesDTO Res = (ResumesDTO)session.getAttribute("Resumes");%>
 	  var gen = '<%=Res.getGender()%>';
 // 	  alert(gen);
 	if(gen=="male"){
@@ -229,9 +227,6 @@
 		$('.female').attr("checked",true);
 	}
 	
-// 	$('input[name=inputValue]').attr('value',"test");
-	$('.userphone').attr("value","<%=userinf.getUserphone() %>")
-	$('.useremail').attr("value","<%=userinf.getUseremail() %>")
 <%-- 	$('.male').attr("checked", <%=male %>); --%>
 <%-- 	$('.female').attr("checked",<%=female %>); --%>
     

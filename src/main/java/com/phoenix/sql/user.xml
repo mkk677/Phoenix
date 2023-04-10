@@ -7,6 +7,20 @@
 		INSERT INTO "member" VALUES (#{userid},#{userpw},#{useremail},#{userphone})
 	</insert>
 	
+	<select id="loadResumes" parameterType="string"  resultType="ResumesDTO">
+		SELECT * FROM resumes WHERE userid=#{userid}
+	</select>
+	
+	<insert id="makeResumes" parameterType="userdto">
+		INSERT INTO resumes
+			VALUES (' ','male',' ',' ',' ',' ',' ',' ',' ',' ',#{userid})
+	</insert>
+	<update id="saveResumes" parameterType="com.phoenix.resumes.ResumesDTO">
+		UPDATE resumes SET username =#{username} , gender =#{gender} ,
+			userphone =#{userphone} ,useremail =#{useremail} ,hight =#{hight} ,school =#{school} ,
+			major =#{major} ,term =#{term} ,career =#{career} ,etc =#{etc} WHERE USERID = #{userid}
+	</update>
+	
 	<delete id="delCoverLetter" parameterType="coverletterdto">
 		DELETE FROM coverletter WHERE USERID = #{userid} AND CNUM =#{cnum}
 	</delete>

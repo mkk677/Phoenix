@@ -226,7 +226,7 @@ ul ul a {
 		loginhref = "/logout/logout.jsp";
 		portfoliohref = "/portfolio/portfolio.jsp";
 		coverletterhref = "/cover_letter/cover_letter.jsp";
-		resumeshref = "/resume/resume.jsp";
+		resumeshref = "/resume/dbload.jsp";
 		mypagehref = "/my_page/MyPage.my";
 		avalue = "로그아웃";
 	}
