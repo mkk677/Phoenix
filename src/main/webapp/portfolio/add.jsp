@@ -25,7 +25,7 @@
 	#title{
 		height: 50px;
 	}
-	#board{
+	#pcontents{
 		width:	98%;
 		height:	300px;
 		resize: none;
