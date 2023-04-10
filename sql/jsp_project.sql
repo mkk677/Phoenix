@@ -78,25 +78,29 @@ SELECT * FROM coverletter;
 
 --------------------resumes 테이블--------------------
 
+--------------------resumes 테이블--------------------
+UPDATE resumes SET username ='수정제목11' , gender ='수정제목11' ,
+userphone ='수정제목11' ,useremail ='수정제목11' ,hight ='수정제목11' ,school ='수정제목11' ,
+major ='수정제목11' ,term ='수정제목11' ,career ='수정제목11' ,etc ='수정제목11' WHERE USERID = 'admin';
 CREATE TABLE resumes(
-	rnum			varchar2(10) PRIMARY KEY,
-	username		varchar2(20),
-	birth			varchar2(10),
-	gender			varchar2(10),
-	addr			varchar2(50),
-	history			varchar2(20),
-	school			varchar2(20),
-	major			varchar2(20),
-	term			varchar2(30),
-	career			varchar2(200),
-	etc				varchar2(200),
-	userid			varchar2(10),
-	CONSTRAINT		userid_fkey	FOREIGN KEY(userid)
-	REFERENCES 		"member"(userid)
+	username		varchar2(100),
+	gender			varchar2(100),
+	userphone		varchar2(100),
+	useremail		varchar2(100),
+	hight			varchar2(100),
+	school			varchar2(100),
+	major			varchar2(100),
+	term			varchar2(100),
+	career			varchar2(1000),
+	etc				varchar2(1000),
+	userid			varchar2(100),
+	CONSTRAINT	userid_re	FOREIGN KEY(userid)
+	REFERENCES "member"(userid)
 );
 
+--DROP TABLE resumes;
 
-SELECT * FROM resumes;
+SELECT * FROM resumes ;
 
 
 CREATE SEQUENCE rnum_seq
@@ -107,6 +111,6 @@ nocache
 
 
 INSERT INTO resumes
-	VALUES (rnum_seq.nextval, 'test','20230303','test','seoul','test','sky','java','20232023','test','test','person');
+	VALUES (' ','male',' ',' ',' ',' ',' ',' ',' ',' ','10026');
 
 
