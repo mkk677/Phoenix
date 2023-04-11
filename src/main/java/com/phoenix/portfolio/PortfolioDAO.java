@@ -18,9 +18,24 @@ public class PortfolioDAO {
 		sqlsession = factory.openSession(true);
 	}
 	
-	public void makeDB(String userid) {
-		sqlsession.insert("User.makeEmptyPofol", userid);
+	public int delDB(PortfolioDTO pdto) {
+		//delPofol
 		
+		int result = 0; // 0 - 실패 1-있는정보삭제 2-빈테이블만삭제
+		
+		int cnt = 0;
+		cnt = sqlsession.selectOne("User.checkPortfolio", pdto);
+		
+		if( cnt == 1 ) { //있는정보 삭제 시도
+			if(sqlsession.delete("User.delPofol",pdto) == 1) {
+				result = 1;
+			}
+		}else {//없는정보 삭제 시도
+			result = 2;
+			
+		}
+		
+		return result;
 	}
 	
 	public boolean saveDB(PortfolioDTO portfolio) {
@@ -41,13 +56,7 @@ public class PortfolioDAO {
 		
 		return result;
 	}
-	
-	
-//	public void loadadd(String userid) {
-//		
-//		sqlsession.selectOne("User.makeemptyPofol", userid);
-//		
-//	}
+
 	
 	public PortfolioDTO loadDB2(String userid,String pnum) {
 		PortfolioDTO Portfolios = new PortfolioDTO();

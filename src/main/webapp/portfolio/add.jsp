@@ -67,7 +67,7 @@
 	}
 	
 	/* 저장 버튼 */
-	button.save{
+	button.save , button.del{
 		margin-top: 10px;
 		display:inline-block;
 		width: 60px;
@@ -78,8 +78,8 @@
 		cursor: pointer;
 		margin-left: 10px;
 		margin-right: 10px;
-		display: block;
-		margin: 8px auto;
+/* 		display: block; */
+/* 		margin: 8px auto; */
 	}
 	
 	/* 텍스트 */
@@ -107,6 +107,7 @@
 							<td><h1>포트폴리오</h1></td>
 						</tr>
 					</table>
+					
 					<table border="1" style="border-collapse:collapse;background-color:white;">
 						<!-- 제목 -->
 						<tr height="50px">
@@ -142,7 +143,11 @@
 						</tr>
 					</table>
 					<!-- 저장 -->
-					<button class="save" id="save" type="button" onclick="savedb()">저장</button>
+					<div style="margin:0 auto; width: 80%; display: flex; justify-content: center; ">
+						<button class="save" id="save" type="button" onclick="savedb()"  >저장</button>
+						<button class="del" id="del" type="button" onclick="location='del.jsp?pnum=${portfolios.pnum}'" >삭제</button>
+					</div>
+					
 				</form>
 			</div>
 		</div>

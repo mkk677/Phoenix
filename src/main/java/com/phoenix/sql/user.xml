@@ -47,6 +47,10 @@
 		DELETE FROM coverletter WHERE USERID = #{userid} AND CNUM =#{cnum}
 	</delete>
 	
+	<delete id="delPofol" parameterType="PortfolioDTO">
+		DELETE FROM portfolio WHERE USERID = #{userid}  AND PNUM =#{pnum}
+	</delete>
+	
 	<insert id="savecl" parameterType="coverletterdto">
 		INSERT INTO coverletter VALUES (#{cnum},#{ctitle},#{ccontents}, #{userid})
 	</insert>
