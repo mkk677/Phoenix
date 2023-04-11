@@ -76,71 +76,82 @@ button:hover {
 </style>
 </head>
 <body>
-	<div class="all">
-		<div class="left">
-			<header></header>
+	<div class = "all">
+		<div class = "left">
+			<header ></header>
 		</div>
-		<div class="right">
-			<c:choose>
-				<c:when test="${not empty member}">
-					<c:forEach var="member" items="${member}">
-						<form name="change_pw" id="change_pw" method="post" action="${pageContext.request.contextPath}/my_page/editPassword.my">
-							<fieldset>
-								<legend>비밀번호 변경</legend>
-								<input type="hidden" name="userid" id="userid" value="${member.userid}">
-								<input type="hidden" name="userpw" id="userpw" value="${member.userpw}">
-								<div>
-									<label for="new_userpw">새로운 비밀번호</label>
-									<input type="password" name="new_userpw" id="new_userpw">
-								</div>
-								<hr>
-								<div>
-									<label for="new_userpwre">비밀번호 확인</label>
-									<input type="password" name="new_userpwre" id="new_userpwre">
-								</div>
-								<hr>
-								<div class="input_group" align="right">
-									<input type="submit" name="button" value="완료"/>
-									<input type="button" name="button2" value="취소" style="margin-left: 20px" onclick="location.href='${pageContext.request.contextPath}/MyPage.my'"/>
-								</div>
-							</fieldset>		
-						</form>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<p>회원 정보가 없습니다.</p>
-				</c:otherwise>
-			</c:choose>
+		<div class = "right" >
+		<!-- html day10 form5 -->
+		<c:choose>
+      		<c:when test="${member != null and fn:length(member) > 0}">
+      	 		<c:forEach var="member" items="${member }">
+					<form name="change_pw" id="change_pw">
+						<fieldset>
+							<legend>비밀번호 변경</legend>
+							<input type="hidden" name="userid" id="userid" value="${member.userid }">
+							<input type="hidden" name="userpw" id="userpw" value="${member.userpw }">
+							<div>
+								<label>새로운 비밀번호</label>
+								<input type="password" name="new_userpw" id="new_userpw">
+							</div>
+							<hr>
+							<div>
+								<label>비밀번호 확인</label>
+								<input type="password" name="new_userpwre" id="new_userpwre">
+							</div>
+							<hr>
+							<div class="input_group" align="right">
+								<input type="submit" name="button" value="완료" onclick="javascript:editPassword('${member.userid}', '${new_userpw}')"/>
+								<input type="button" name="button2" value="취소" style="margin-left: 20px" onclick="location.href='MyPage.my'"/>
+							</div>
+						</fieldset>		
+					</form>
+				</c:forEach>    
+		    </c:when>
+		 <c:otherwise>
+
+         </c:otherwise> 	
+         </c:choose>
 		</div>
 	</div>
 
-	<script src="/header.js"></script>
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="regex.js"></script>
-	<script>
-		$(function() {
-			$("#change_pw").submit(function(e) {
-				e.preventDefault();
-				if (!regex.value('#new_userpw', '비밀번호를 입력하세요.')) { return false; }
-				if (!regex.min_length('#new_userpw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
-				if (!regex.max_length('#new_userpw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
-				if (!regex.compare_to('#new_userpw', '#new_userpwre', '비밀번호를 확인해주세요.')) { return false; }
-				alert("수정 완료했습니다.");
-			});
-		});
-		
-		function editPassword(userid, new_userpw){
-			
-			var new_userpw_value = $("#new_userpw").val();
-			var new_userpwre_value = $("#new_userpwre").val();
-			
-			if (new_userpw_value == new_userpwre_value) {
-					document.change_pw.action = "${pageContext.request.contextPath }/my_page/editPassword.my?userid="
-							+ userid;
-					document.change_pw.submit();
-				}
+<script src="/header.js"></script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- 정규표현식 검사 객체를 참조한다. -->
+<script src="regex.js"></script>
+<script>
+$(function() {
+    /** 가입폼의 submit 이벤트 */
+    $("#change_pw").submit(function(e) {
+        // 기본동작 수행 방식
+        e.preventDefault();
 
-			}
+        /** 비밀번호 검사 */
+        if (!regex.value('#new_userpw', '비밀번호를 입력하세요.')) { return false; }
+        if (!regex.min_length('#new_userpw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+        if (!regex.max_length('#new_userpw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
+        if (!regex.compare_to('#new_userpw', '#new_userpwre', '비밀번호를 확인해주세요.')) { return false; }
+
+
+        // 처리 완료
+        alert("수정 완료했습니다.");
+    });
+});
+	
+
+	
+function editPassword(userid, new_userpw){
+			
+	var new_userpw_value = $("#new_userpw").val();
+	var new_userpwre_value = $("#new_userpwre").val();
+			
+	if (new_userpw_value == new_userpwre_value) {
+		document.change_pw.action = "${pageContext.request.contextPath }/my_page/editPassword.my?userid="
+				+ userid;
+		document.change_pw.submit();
+	}
+
+}
 </script>
 
 
