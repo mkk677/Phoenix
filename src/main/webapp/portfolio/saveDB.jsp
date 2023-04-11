@@ -9,6 +9,8 @@
 String ptitle = request.getParameter("ptitle"); //항목명
 String pcontents = request.getParameter("pcontents"); //항목명
 String purl = request.getParameter("purl"); //자소서 내용도 똑같이 가져와야함
+String pnum = request.getParameter("pnum");
+String ppath = request.getParameter("ppath");
 System.out.println("========="+ptitle+"========="+pcontents+"====");
 
 PortfolioDAO pdao = new PortfolioDAO();
@@ -20,8 +22,9 @@ PortfolioDTO pfDto = new PortfolioDTO();
 pfDto.setPtitle(ptitle);
 pfDto.setPcontents(pcontents);
 pfDto.setPurl(purl);
-pfDto.setPpath("testPATH");
+pfDto.setPpath(ppath);
 pfDto.setUserid(userid);
+pfDto.setPnum(pnum);
 
 if(pdao.saveDB(pfDto)){
 	//저장완료

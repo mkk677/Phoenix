@@ -190,10 +190,11 @@
 		var ptitle = document.getElementById('ptitle');
 		var pcontents = document.getElementById('pcontents');
 		var purl = document.getElementById('pcontents');
+		var ppath = document.getElementById('ppath');
 		
 		let xhrs = new XMLHttpRequest();
 		
-		xhrs.open("POST","/portfolio/saveDB.jsp?ptitle="+ptitle.value+"&pcontents="+pcontents.value+"&purl="+purl.value,true);
+		xhrs.open("POST","/portfolio/saveDB.jsp?ptitle="+ptitle.value+"&pcontents="+pcontents.value+"&purl="+purl.value+"&pnum="+pnum+"&ppath="+ppath,true);
 		xhrs.send();
 		xhrs.onreadystatechange = function(){
 			if(xhrs.readyState == 4){

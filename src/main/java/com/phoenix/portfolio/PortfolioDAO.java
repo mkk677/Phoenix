@@ -21,10 +21,22 @@ public class PortfolioDAO {
 	public boolean saveDB(PortfolioDTO portfolio) {
 		boolean result = false ;
 		
+		int cnt = 0;
+		cnt = sqlsession.selectOne("User.checkPortfolio", portfolio);
 		System.out.println("=============피카피카===============");
-		if(sqlsession.insert("User.savePortfolio", portfolio) == 1) {
-			result = true;
+		if(cnt == 0) {
+			System.out.println("=============피카피카===============");
+			if(sqlsession.insert("User.savePortfolio", portfolio) == 1) {
+				result = true;
+			}
+		}else {
+			System.out.println("=============피카피카222===============");
+			if(sqlsession.update("User.updatePortfolio", portfolio) == 1) {
+				result = true;
+			}
 		}
+		
+		
 		
 		return result;
 	}

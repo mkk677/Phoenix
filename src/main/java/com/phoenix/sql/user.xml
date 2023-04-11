@@ -60,6 +60,14 @@
 		SELECT COUNT(*) FROM  coverletter WHERE CNUM = #{cnum} AND USERID = #{userid}
 	</select>
 	
+	<select id="checkPortfolio" parameterType="PortfolioDTO" resultType="int">
+		SELECT * FROM portfolio WHERE userid=#{userid} AND pnum= #{pnum}
+	</select>
+	
+	<update id="updatePortfolio" parameterType="PortfolioDTO">
+		UPDATE PORTFOLIO SET PTITLE=#{ptitle} , PCONTENTS =#{pcontents} , PURL =#{purl} , PPATH = #{ppath} WHERE PNUM = #{pnum} AND USERID = #{userid}
+	</update>
+	
 	<update id="updateCoverLetter" parameterType="coverletterdto">
 		UPDATE coverletter SET CTITLE =#{ctitle} , CCONTENTS =#{ccontents} WHERE CNUM =#{cnum} AND USERID = #{userid}
 	</update>
