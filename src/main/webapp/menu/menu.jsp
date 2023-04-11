@@ -243,8 +243,8 @@ ul ul a {
 		
 	</div>
 	<ul class="list-unstyled components">
-		<h1 class="site-title" align="center" style="font-family:'Arvo' ,sans-serif !important; font-weight: 500;">
-		Phoenix </h1>
+		<h1 class="site-title" align="center" style="font-family:'Arvo' ,sans-serif !important; font-weight: 500; font-size: 30px;color:#434343;">
+		Career Hunter </h1>
 		<p>
 			<a href="<%=loginhref %>" id="menulogin" class = "menulogin" name="menulogin"><%=avalue %></a>
 		</p>
@@ -260,6 +260,11 @@ ul ul a {
 		<li>
 			<a href="<%=mypagehref %>" id="menumypage" class = "menumypage" name="menumypage">내정보</a>
 		</li>
+		
+		<div style="display:flex; height: 300px; align-items: center;">
+		<h4 class="site-title" align="center" style=" font-weight: 400;  margin: 0 auto;" >
+		Developed By Phoenix </h4>
+		</div>
 	</ul>
 	
 	</nav>
