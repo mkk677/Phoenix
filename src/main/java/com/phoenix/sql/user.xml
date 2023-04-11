@@ -18,6 +18,13 @@
             )
 	</insert>
 	
+	<insert id="makeEmptyPofol" parameterType="string" >
+	INSERT INTO portfolio
+	VALUES 	(portfolio_seq.nextval,  '', '', '', 
+			   '', #{userid}
+            )
+	</insert>
+	
 	<select id="loadPortfol" parameterType="PortfolioDTO" resultType="PortfolioDTO">
 		SELECT * FROM portfolio WHERE userid=#{userid} AND pnum=#{pnum}
 	</select>
@@ -61,7 +68,7 @@
 	</select>
 	
 	<select id="checkPortfolio" parameterType="PortfolioDTO" resultType="int">
-		SELECT * FROM portfolio WHERE userid=#{userid} AND pnum= #{pnum}
+		SELECT COUNT(*) FROM portfolio WHERE userid=#{userid} AND pnum= #{pnum}
 	</select>
 	
 	<update id="updatePortfolio" parameterType="PortfolioDTO">

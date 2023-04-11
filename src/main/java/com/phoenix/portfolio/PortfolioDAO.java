@@ -18,9 +18,13 @@ public class PortfolioDAO {
 		sqlsession = factory.openSession(true);
 	}
 	
+	public void makeDB(String userid) {
+		sqlsession.insert("User.makeEmptyPofol", userid);
+		
+	}
+	
 	public boolean saveDB(PortfolioDTO portfolio) {
 		boolean result = false ;
-		
 		int cnt = 0;
 		cnt = sqlsession.selectOne("User.checkPortfolio", portfolio);
 		if(cnt == 0) {
@@ -37,6 +41,13 @@ public class PortfolioDAO {
 		
 		return result;
 	}
+	
+	
+//	public void loadadd(String userid) {
+//		
+//		sqlsession.selectOne("User.makeemptyPofol", userid);
+//		
+//	}
 	
 	public PortfolioDTO loadDB2(String userid,String pnum) {
 		PortfolioDTO Portfolios = new PortfolioDTO();
