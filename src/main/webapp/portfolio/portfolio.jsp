@@ -133,7 +133,7 @@
 //		pnums.substr(4,pnums.length) - pnum
 		var  pnum = pnums.substr(4,pnums.length);
 		alert(pnum);
-		location.href="/portfolio/add.jsp?pnum=" + pnum;
+		location.href="/portfolio/loadDBPF.jsp?pnum=" + pnum;
 	}
 			
 			

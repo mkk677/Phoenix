@@ -166,46 +166,39 @@ input[type=text] ,textarea{
 			      tbDB = DB.split('/');
 			      DBlen = tbDB[0];
 			      sessionStorage.setItem("DBlen",DBlen);
-			      console.log("==================DBlen :"+DBlen+"asdfgsfh============");
-			      console.log("==================DBlen :"+tbDB[1]+"============");
-			      
 				  makeDBtable(DBlen,tbDB); //테이블 코드 생성
 			    } else {
 			      console.log('fail...');
 			    }
 			  }
 		}
-		function makeDBtable(len,tbDB) {
-// 			 console.log("==================len :"+len+"============");	
-			var recentid=0;
-			for (var i=0 ; i<len ; i++){
-				//tbDB[1] = tb_1&수정제목11&수정내용11
-// 				console.log("==================tbDB :"+tbDB[i]+"============");
-				var strs =tbDB[i+1].split('&');
-				var ids = strs[0].split('_')[1]; //테이블 번호
-				recentid = (recentid>parseInt(ids))?recentid : ids;
-				console.log("==================recentid :"+recentid+"============");
-				sessionStorage.setItem("DBlen",parseInt(recentid)+1); //마지막번호 다음번호를 넘겨주는것
-				DBtableCode[i] =  `<table border="1" id="`+ strs[0]+`" class="`+ strs[0] +`" >
-										<tr class="row1">
-										<td class="col1">
-											<input type="text" class="ctitle_`+ ids +`" id="ctitle_`+ ids +`" name="ctitle_`+ ids +`" placeholder="항목 입력" value="`+strs[1]+`">
-										</td>
-										<td class="col2"> <button class="X" onclick="del(`+ ids +`)">×</button> </td>
-									</tr>
-									<tr class="row2">
-										<td colspan="2">
-											<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ ids +`" class="ccontents_`+ ids +`" name="ccontents_`+ ids +`">`+strs[2]+`</textarea>
-										</td>
-									</tr>
-								</table>
-								<button type="submit" class="save" id="save`+ ids +`" onclick="save(`+ ids +`)">저장</button>`;//이거 코드 수정해야함
-								
-				$("#content").append(DBtableCode[i]);
-				//디비에서 내용 가져와서 적용하기
-			
-			}
-		}
+function makeDBtable(len,tbDB) {
+var recentid=0;
+for (var i=0 ; i<len ; i++){
+	var strs =tbDB[i+1].split('&');
+	var ids = strs[0].split('_')[1]; //테이블 번호
+	recentid = (recentid>parseInt(ids))?recentid : ids;
+	sessionStorage.setItem("DBlen",parseInt(recentid)+1); //마지막번호 다음번호를 넘겨주는것
+	DBtableCode[i] =  `<table border="1" id="`+ strs[0]+`" class="`+ strs[0] +`" >
+						<tr class="row1">
+						<td class="col1">
+							<input type="text" class="ctitle_`+ ids +`" id="ctitle_`+ ids +`" name="ctitle_`+ ids +`" placeholder="항목 입력" value="`+strs[1]+`">
+						</td>
+						<td class="col2"> <button class="X" onclick="del(`+ ids +`)">×</button> </td>
+					</tr>
+					<tr class="row2">
+						<td colspan="2">
+							<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ ids +`" class="ccontents_`+ ids +`" name="ccontents_`+ ids +`">
+							`+strs[2]+`</textarea>
+						</td>
+					</tr>
+				</table>
+				<button type="submit" class="save" id="save`+ ids +`" onclick="save(`+ ids +`)">저장</button>`;//이거 코드 수정해야함
+					
+	$("#content").append(DBtableCode[i]);
+	//디비에서 내용 가져와서 적용하기
+}
+}
 	/////////////////////////////////////자소서 불러오는 부분끝//////////////////////////
 	
 		
@@ -230,13 +223,15 @@ input[type=text] ,textarea{
 			var tbl = `<table border="1" id="tb_`+ String(tableNum) +`" class="tb_`+ String(tableNum) +`" >
 							<tr class="row1">
 							<td class="col1">
-								<input type="text" class="ctitle_`+ String(tableNum) +`" id="ctitle_`+ String(tableNum) +`" name="ctitle_`+ String(tableNum) +`" placeholder="항목 입력" ">
+								<input type="text" class="ctitle_`+ String(tableNum) +`" id="ctitle_`+ String(tableNum) +`" name="ctitle_`+ String(tableNum) +`" 
+								placeholder="항목 입력" ">
 							</td>
 							<td class="col2"> <button class="X" onclick="del(`+ String(tableNum) +`)">×</button> </td>
 						</tr>
 						<tr class="row2">
 							<td colspan="2">
-								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ String(tableNum) +`" class="ccontents_`+ String(tableNum) +`" name="ccontents_`+ String(tableNum) +`"></textarea>
+								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ String(tableNum) +`" 
+								class="ccontents_`+ String(tableNum) +`" name="ccontents_`+ String(tableNum) +`"></textarea>
 							</td>
 						</tr>
 					</table>

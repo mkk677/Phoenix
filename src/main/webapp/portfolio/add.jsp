@@ -1,3 +1,4 @@
+<%@page import="com.phoenix.portfolio.PortfolioDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -110,19 +111,19 @@
 						<!-- 제목 -->
 						<tr height="50px">
 							<td>
-								<input type="text" id="ptitle" class = "ptitle" placeholder="  제목">
+								<input type="text" id="ptitle" class = "ptitle" placeholder="  제목" value="${portfolios.ptitle}">
 							</td>
 						</tr>
 						<!-- 내용 -->
 						<tr height="300px">
 							<td>
-								<textarea id="pcontents" placeholder="  내용"></textarea>					
+								<textarea id="pcontents" placeholder="  내용">${portfolios.pcontents}</textarea>					
 							</td>
 						</tr>
 						<!-- 링크 -->
 						<tr>
 							<td class="form-group" >
-								<input type="text" id="purl" class="purl" placeholder="  URL 추가">
+								<input type="text" id="purl" class="purl" placeholder="  URL 추가" value=" ${portfolios.purl}">
 							</td>
 						</tr>
 						<!-- 이미지 -->
@@ -153,38 +154,7 @@
 	
 	
 	<script >
-			var pnum = <%=request.getParameter("pnum") %>;
-		// 	alert(pnum);
-		
-			let xhr4 = new XMLHttpRequest();
-			
-			xhr4.open("POST","/portfolio/loadDBPF.jsp?pnum="+pnum,true);//tableNum 이 cnum임
-			xhr4.send();
-			xhr4.onreadystatechange = function(){
-				if (xhr4.readyState == 4)  {
-					var DB = xhr4.responseText.trim();
-				    const status = xhr4.status;
-				    if(status === 0 || (status >= 200 && status < 400)) {
-				      console.log('success portfolio loadDB...');
-				      var DB = xhr4.responseText.trim();
-				      // /기준으로 각각 다른 포트폴리오
-				      // & 기준으로 포트폴리오별 요소
-				      console.log("==================DB :"+DB+"============");
-				      tbDB = DB.split('/--/');
-				      console.log("==================tbDB :"+tbDB+"============");
-				      //Portfolio Title,Portfolio Content,http://example.com,/portfolio/imgs/ex.png
-				      //title contents url path
-						$('.ptitle').attr("value", tbDB[0]);
-						document.getElementById('pcontents').textContent = tbDB[1];
-						$('.purl').attr("value", tbDB[2]);
-// 						$('.file').attr("value", tbDB[3]); // 첨부파일은 좀 알아봐야함
-				      
-// 					  makeDBtable(tbDB); //테이블 코드 생성
-				    } else {
-				      console.log('fail portfolio loadDB...');
-				    }
-				  }
-			}
+
 
 	function savedb(){	//num은 테이블 번호 즉 몇번째 테이블인지 - 0부터 시작
 		var ptitle = document.getElementById('ptitle');

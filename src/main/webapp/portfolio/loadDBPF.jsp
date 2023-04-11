@@ -9,13 +9,9 @@
 	UserDTO userinf = (UserDTO)session.getAttribute("session_member");
 	PortfolioDAO pdao = new PortfolioDAO( );
 	PortfolioDTO pdto = pdao.loadDB2(userinf.getUserid(),pnum);
-	
- 	out.print(pdto.getPtitle());
- 	out.print("/--/");
- 	out.print(pdto.getPcontents());
- 	out.print("/--/");
- 	out.print(pdto.getPurl());
- 	System.out.println("=====================pdto.getPurl() :"+pdto.getPurl()+"==================");
- 	out.print("/--/");
- 	out.print(pdto.getPpath());
+// 	System.out.println("=====================pdto.getPtitle() :"+pdto.getPurl()+"==================");
+	session.setAttribute("portfolios", pdto);
 %>
+<script>
+location.href ="/portfolio/add.jsp";
+</script>
