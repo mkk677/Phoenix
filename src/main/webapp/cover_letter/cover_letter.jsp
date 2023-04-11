@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cover Letter</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style >
 
@@ -182,13 +182,13 @@ for (var i=0 ; i<len ; i++){
 	DBtableCode[i] =  `<table border="1" id="`+ strs[0]+`" class="`+ strs[0] +`" >
 						<tr class="row1">
 						<td class="col1">
-							<input type="text" class="ctitle_`+ ids +`" id="ctitle_`+ ids +`" name="ctitle_`+ ids +`" placeholder="항목 입력" value="`+strs[1]+`">
+							<input type="text" class="ctitle_`+ ids +`" id="ctitle_`+ ids +`" name="ctitle_`+ ids +`" placeholder="항목을 입력해주세요" value="`+strs[1]+`">
 						</td>
 						<td class="col2"> <button class="X" onclick="del(`+ ids +`)">×</button> </td>
 					</tr>
 					<tr class="row2">
 						<td colspan="2">
-							<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ ids +`" class="ccontents_`+ ids +`" name="ccontents_`+ ids +`">
+							<textarea maxlength="500" placeholder="자기소개를 입력해주세요" style="resize: none;" id="ccontents_`+ ids +`" class="ccontents_`+ ids +`" name="ccontents_`+ ids +`">
 							`+strs[2]+`</textarea>
 						</td>
 					</tr>
@@ -224,13 +224,13 @@ for (var i=0 ; i<len ; i++){
 							<tr class="row1">
 							<td class="col1">
 								<input type="text" class="ctitle_`+ String(tableNum) +`" id="ctitle_`+ String(tableNum) +`" name="ctitle_`+ String(tableNum) +`" 
-								placeholder="항목 입력" ">
+								placeholder="항목을 입력해주세요" ">
 							</td>
 							<td class="col2"> <button class="X" onclick="del(`+ String(tableNum) +`)">×</button> </td>
 						</tr>
 						<tr class="row2">
 							<td colspan="2">
-								<textarea maxlength="500" placeholder="자기소개 입력" style="resize: none;" id="ccontents_`+ String(tableNum) +`" 
+								<textarea maxlength="500" placeholder="자기소개를 입력해주세요" style="resize: none;" id="ccontents_`+ String(tableNum) +`" 
 								class="ccontents_`+ String(tableNum) +`" name="ccontents_`+ String(tableNum) +`"></textarea>
 							</td>
 						</tr>
@@ -258,9 +258,9 @@ for (var i=0 ; i<len ; i++){
 			xhr.onreadystatechange = function(){
 				if(xhr.readyState == 4){
 					if(xhr.responseText.trim() == "ok"){
-						alert("저장됨");
+						alert("저장되었습니다.");
 					}else{
-						alert("저장실패");
+						alert("저장 실패했습니다.");
 					}
 					
 				}
@@ -284,14 +284,14 @@ for (var i=0 ; i<len ; i++){
 					if(xhr2.responseText.trim() == "ok"){
 						$("#tb_"+cnum).remove();
 						$("#save"+cnum).remove();
-						alert("삭제됨");
+						alert("삭제되었습니다.");
 					}else if(xhr2.responseText.trim() == "not-ok"){
-						alert("삭제실패");
+						alert("삭제 실패했습니다.");
 					}else if(xhr2.responseText.trim() == "empty"){
 						sessionStorage.setItem("DBlen",sessionStorage.getItem("DBlen")-1);
 						$("#tb_"+cnum).remove();
 						$("#save"+cnum).remove();
-						alert("삭제됨");
+						alert("삭제되었습니다.");
 					}
 					
 				}

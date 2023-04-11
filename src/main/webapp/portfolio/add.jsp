@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Portfolio</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
 	table{
@@ -111,19 +111,19 @@
 						<!-- 제목 -->
 						<tr height="50px">
 							<td>
-								<input type="text" id="ptitle" class = "ptitle" placeholder="  제목" value="${portfolios.ptitle}">
+								<input type="text" id="ptitle" class = "ptitle" placeholder="  제목을 입력하세요" value="${portfolios.ptitle}">
 							</td>
 						</tr>
 						<!-- 내용 -->
 						<tr height="300px">
 							<td>
-								<textarea id="pcontents" placeholder="  내용">${portfolios.pcontents}</textarea>					
+								<textarea id="pcontents" placeholder="  내용을 입력하세요">${portfolios.pcontents}</textarea>					
 							</td>
 						</tr>
 						<!-- 링크 -->
 						<tr>
 							<td class="form-group" >
-								<input type="text" id="purl" class="purl" placeholder="  URL 추가" value=" ${portfolios.purl}">
+								<input type="text" id="purl" class="purl" placeholder="  URL 추가해주세요" value=" ${portfolios.purl}">
 							</td>
 						</tr>
 						<!-- 이미지 -->
@@ -131,7 +131,7 @@
 							<td>
 								<div id="image_container" ></div>
 								<div class="filebox" style="display: flex; padding-right : 5px;">
-								    <input class="upload-name" placeholder="첨부파일" style="border: none;">
+								    <input class="upload-name" placeholder="파일을 첨부해주세요" style="border: none;">
 								    <label for="file" style="padding-left: 14px;">파일찾기</label> 
 <!-- 								    https://m.blog.naver.com/whatacodingday/221844492754
 										- 파일가져오기참고링크..?
@@ -169,9 +169,9 @@
 		xhrs.onreadystatechange = function(){
 			if(xhrs.readyState == 4){
 				if(xhrs.responseText.trim() == "ok"){
-					alert("저장됨");
+					alert("저장되었습니다.");
 				}else{
-					alert("저장실패");
+					alert("저장 실패했습니다.");
 				}
 				
 			}

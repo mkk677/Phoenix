@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Resumes</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
 	table{
@@ -221,7 +221,7 @@
 	<% ResumesDTO Res = (ResumesDTO)session.getAttribute("Resumes");
 	UserDTO userinf = (UserDTO)session.getAttribute("session_member");
 	%>
-	  var gen = '<%=Res.getGender()%>';
+	  var gen = '<%= Res != null ? Res.getGender() : "" %>';
 // 	  alert(gen);
 	if(gen=="male"){
 		$('.male').attr("checked", true);

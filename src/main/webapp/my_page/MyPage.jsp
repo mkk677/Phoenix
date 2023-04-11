@@ -151,7 +151,7 @@ $(function() {
         if (!regex.phone('#userphone', '연락처가 잘못되었습니다.')) { return false; }
 
         // 처리 완료
-        alert("수정완료!!");
+        alert("수정 완료했습니다.");
     });
 });
 	
@@ -181,7 +181,7 @@ function updateInform(userid,useremail,userphone){
 
 function comparepw(userid, userpw){
 	
-	let pw = prompt("비밀번호를 입력해주세요")
+	let pw = prompt("비밀번호를 입력해주세요.")
 	
 	if( userpw == pw ){
 		
@@ -190,7 +190,7 @@ function comparepw(userid, userpw){
 	    document.rejoin_form.submit();
 	       
 	} else {
-		alert("비밀번호를 확인해주세요");
+		alert("비밀번호를 확인해주세요.");
 	}
 
 }
