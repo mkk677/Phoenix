@@ -128,6 +128,19 @@ button:hover {
 				alert("수정 완료했습니다.");
 			});
 		});
+		
+		function editPassword(userid, new_userpw){
+			
+			var new_userpw_value = $("#new_userpw").val();
+			var new_userpwre_value = $("#new_userpwre").val();
+			
+			if (new_userpw_value == new_userpwre_value) {
+					document.change_pw.action = "${pageContext.request.contextPath }/my_page/editPassword.my?userid="
+							+ userid;
+					document.change_pw.submit();
+				}
+
+			}
 </script>
 
 
