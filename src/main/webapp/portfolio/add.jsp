@@ -31,8 +31,8 @@
 		height:	300px;
 		resize: none;
 	}
-	#url-input{
-		height: 50px;
+	#purl{
+		height: 40px;
 	}
 	/* 파일 */
 	.filebox .upload-name {
@@ -123,7 +123,7 @@
 						<!-- 링크 -->
 						<tr>
 							<td class="form-group" >
-								<input type="text" id="purl" class="purl" placeholder="  URL 추가해주세요" value=" ${portfolios.purl}">
+								<input type="text" id="purl" class="purl" placeholder="  URL 추가해주세요" value="${portfolios.purl}">
 							</td>
 						</tr>
 						<!-- 이미지 -->
