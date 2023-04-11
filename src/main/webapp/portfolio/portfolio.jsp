@@ -132,7 +132,7 @@
 // 		console.log("==================pnum :"+pnums.substr(4,pnums.length) +"============");
 //		pnums.substr(4,pnums.length) - pnum
 		var  pnum = pnums.substr(4,pnums.length);
-		alert(pnum);
+// 		alert(pnum);
 		location.href="/portfolio/loadDBPF.jsp?pnum=" + pnum;
 	}
 			

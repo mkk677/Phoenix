@@ -171,9 +171,9 @@
 		xhrs.onreadystatechange = function(){
 			if(xhrs.readyState == 4){
 				if(xhrs.responseText.trim() == "ok"){
-					alert("저장되었습니다.");
+					alert("저장되었습니다!!");
 				}else{
-					alert("저장 실패했습니다.");
+					alert("저장 실패...");
 				}
 				
 			}

@@ -16,6 +16,6 @@
 
 
     <script>
-    	alert("저장 성공했습니다.");
+    	alert("저장 성공!!");
     	location.href ="/resume/resume.jsp";
     </script>

@@ -284,14 +284,14 @@ for (var i=0 ; i<len ; i++){
 					if(xhr2.responseText.trim() == "ok"){
 						$("#tb_"+cnum).remove();
 						$("#save"+cnum).remove();
-						alert("삭제됨");
+						alert("삭제되었습니다!");
 					}else if(xhr2.responseText.trim() == "not-ok"){
-						alert("삭제실패");
+						alert("삭제 실패..");
 					}else if(xhr2.responseText.trim() == "empty"){
 						sessionStorage.setItem("DBlen",sessionStorage.getItem("DBlen")-1);
 						$("#tb_"+cnum).remove();
 						$("#save"+cnum).remove();
-						alert("삭제됨");
+						alert("삭제되었습니다!");
 					}
 					
 				}

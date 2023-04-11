@@ -14,12 +14,12 @@
 			session.setAttribute("session_member", member);
 	%>
 		<script>
-			alert("로그인 성공하셨습니다.");
+			alert("로그인 성공!!");
 			location.href ="/portfolio/portfolio.jsp";
 		</script>
 	<%} else { // 로그인 실패 %>
 		<script>
-			alert("아이디 또는 패스워드를 확인해 주세요.");
+			alert("아이디 또는 패스워드를 확인해 주세요...");
 			location.href ="/login/login.jsp";
 		</script>
 	
