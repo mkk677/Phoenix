@@ -130,9 +130,9 @@ $(function() {
         e.preventDefault();
 
         /** 아이디 검사 */
-        if (!regex.value('#userid', '아이디를 입력해주세요')) { return false; }
-        if (!regex.eng_num('#userid', '아이디는 영어와 숫자만 입력 가능합니다')) { return false; }
-        if (!regex.min_length('#userid', 4, '아이디는 최소4자이상 입력해주세요 ')) { return false; }
+        if (!regex.value('#userid', '아이디를 입력해주세요.')) { return false; }
+        if (!regex.eng_num('#userid', '아이디는 영어와 숫자만 입력 가능합니다.')) { return false; }
+        if (!regex.min_length('#userid', 4, '아이디는 최소4자이상 입력해주세요. ')) { return false; }
         if (!regex.max_length('#userid', 9, '아이디는 최대 9자 까지만 입력 가능합니다.')) { return false; }
         if(n==0){alert("아이디 중복확인을 먼저 해주세요!");return false;}
 
@@ -140,7 +140,7 @@ $(function() {
         if (!regex.value('#userpw', '비밀번호를 입력하세요.')) { return false; }
         if (!regex.min_length('#userpw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
         if (!regex.max_length('#userpw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
-        if (!regex.compare_to('#userpw', '#userpwre', '비밀번호를 확인해주세요')) { return false; }
+        if (!regex.compare_to('#userpw', '#userpwre', '비밀번호를 확인해주세요.')) { return false; }
 
 
         /** 이메일 검사 */
@@ -164,7 +164,7 @@ function checkId(userid){
 //	alert(data);	
 	
 	if(userid == ""){
-		alert("아이디를 입력해주세요");
+		alert("아이디를 입력해주세요.");
 		return false;
 	}else{
 		//ajax통신

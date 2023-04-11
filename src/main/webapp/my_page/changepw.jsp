@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>editPW</title>
+<title>EditPW</title>
 
 <!-- <link rel="stylesheet" href="/division.css"> -->
 <style >
@@ -130,29 +130,28 @@ $(function() {
         if (!regex.value('#new_userpw', '비밀번호를 입력하세요.')) { return false; }
         if (!regex.min_length('#new_userpw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
         if (!regex.max_length('#new_userpw', 20, '비밀번호는 최대 20자 까지만 입력 가능합니다.')) { return false; }
-        if (!regex.compare_to('#new_userpw', '#new_userpwre', '비밀번호를 확인해주세요')) { return false; }
+        if (!regex.compare_to('#new_userpw', '#new_userpwre', '비밀번호를 확인해주세요.')) { return false; }
 
 
         // 처리 완료
-        alert("수정완료!!");
+        alert("수정 완료했습니다.");
     });
 });
 	
+
+	
 function editPassword(userid, new_userpw){
-	
-//	let new_userpw = ${new_userpw}.value;
-	
-//	alert(userid + new_userpw);
-     document.change_pw.action 
-     = "${pageContext.request.contextPath }/my_page/editPassword.my?userid="+userid;  
-   	 document.change_pw.submit();
-	
+			
+	var new_userpw_value = $("#new_userpw").val();
+	var new_userpwre_value = $("#new_userpwre").val();
+			
+	if (new_userpw_value == new_userpwre_value) {
+		document.change_pw.action = "${pageContext.request.contextPath }/my_page/editPassword.my?userid="
+				+ userid;
+		document.change_pw.submit();
+	}
+
 }
-	
-	  
-	 
-	
-	
 </script>
 
 

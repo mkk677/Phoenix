@@ -108,12 +108,12 @@ span.psw {
 		<form action="/login/logincheck.jsp" method="post" id="frm" class="frm" name="frm" >
 		   	<div class="idArea">
 			   	<label for="userid" ><b>아이디</b></label>
-			    <input  type="text" placeholder="아이디 입력" name="userid"  id="userid" class="userid" required>
+			    <input  type="text" placeholder="아이디를 입력해주세요" name="userid"  id="userid" class="userid" required>
 		   	</div>
 		
 		    <div class="pwArea">
 			    <label for="userpw"><b>비밀번호</b></label>
-			    <input type="password" placeholder="비밀번호 입력" name="userpw"  id="userpw" class="userpw" required>
+			    <input type="password" placeholder="비밀번호를 입력해주세요" name="userpw"  id="userpw" class="userpw" required>
 		    </div>
 		        
 		    <button type="submit" id="loginbtn" class="loginbtn" name="loginbtn" >로그인</button>
